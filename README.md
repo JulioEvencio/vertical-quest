@@ -1,2 +1,3 @@
-# super-vertical-quest
+# Vertical Quest
+
 A simple platform game
