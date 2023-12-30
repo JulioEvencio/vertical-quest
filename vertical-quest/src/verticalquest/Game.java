@@ -33,7 +33,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		this.setPreferredSize(new Dimension(Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE));
 
 		this.fps = 0;
-		this.showFPS = true;
+		this.showFPS = false;
 		this.renderer = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
 	}
 
@@ -121,7 +121,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// Code
+		if (e.getKeyCode() == KeyEvent.VK_F3) {
+			this.showFPS = !this.showFPS;
+		}
 	}
 
 	@Override
