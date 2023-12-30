@@ -11,6 +11,10 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JOptionPane;
+
+import verticalquest.strings.StringError;
+
 public class Game extends Canvas implements Runnable, KeyListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
@@ -26,6 +30,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	private final BufferedImage renderer;
 
+	private GameStatus gameStatus;
+
 	public Game() {
 		this.addKeyListener(this);
 		this.addMouseListener(this);
@@ -35,6 +41,11 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		this.fps = 0;
 		this.showFPS = false;
 		this.renderer = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
+		this.gameStatus = GameStatus.MAIN_MENU;
+	}
+
+	public void updateGameStatus(GameStatus gameStatus) {
+		this.gameStatus = gameStatus;
 	}
 
 	private void tick() {
@@ -61,7 +72,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Graphics graphics = bs.getDrawGraphics();
 		graphics.drawImage(this.renderer, 0, 0, Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE, null);
 
-		// Code
+		if (this.gameStatus == GameStatus.MAIN_MENU) {
+			// Code
+		}
 
 		if (this.showFPS) {
 			graphics.setColor(Color.BLACK);
@@ -153,7 +166,20 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// Code
+		if (e.getButton() == MouseEvent.BUTTON1) {
+			if (this.gameStatus == GameStatus.MAIN_MENU) {
+				System.out.println("Hi!");
+			}
+		}
+	}
+
+	public static void exitGame() {
+		System.exit(0);
+	}
+
+	public static void exitWithError(String error) {
+		JOptionPane.showMessageDialog(null, error, StringError.ERROR, JOptionPane.ERROR_MESSAGE);
+		Game.exitGame();
 	}
 
 }
