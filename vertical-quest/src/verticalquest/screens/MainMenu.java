@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import verticalquest.Game;
+import verticalquest.GameStatus;
 import verticalquest.GameUtil;
 import verticalquest.gui.Button;
 import verticalquest.resources.Spritesheet;
@@ -55,7 +56,17 @@ public class MainMenu {
 		if (this.mouseReleased) {
 			this.buttons.forEach(button -> {
 				if (button.wasClicked(this.clickX, this.clickY)) {
-					// Code
+					GameStatus gameStatus = null;
+
+					if (button.getText().equals("New Game")) {
+						gameStatus = GameStatus.NEW_GAME;
+					} else if (button.getText().equals("Credits")) {
+						gameStatus = GameStatus.CREDITS;
+					} else if (button.getText().equals("Exit")) {
+						gameStatus = GameStatus.EXIT;
+					}
+
+					Game.updateGameStatus(gameStatus);
 				}
 
 				button.setButtonReleased();

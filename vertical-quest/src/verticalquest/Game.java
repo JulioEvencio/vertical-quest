@@ -57,6 +57,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private void tick() {
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			this.mainMenu.tick();
+		} else if (Game.gameStatus == GameStatus.EXIT) {
+			Game.exitGame();
 		}
 	}
 

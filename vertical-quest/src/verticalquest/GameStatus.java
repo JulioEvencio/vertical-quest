@@ -2,6 +2,6 @@ package verticalquest;
 
 public enum GameStatus {
 
-	MAIN_MENU;
+	NEW_GAME, MAIN_MENU, CREDITS, EXIT;
 
 }
