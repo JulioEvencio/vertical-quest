@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JOptionPane;
 
+import verticalquest.screens.MainMenu;
 import verticalquest.strings.StringError;
 
 public class Game extends Canvas implements Runnable, KeyListener, MouseListener {
@@ -30,7 +31,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	private final BufferedImage renderer;
 
-	private GameStatus gameStatus;
+	private static GameStatus gameStatus;
+
+	private final MainMenu mainMenu;
 
 	public Game() {
 		this.addKeyListener(this);
@@ -41,15 +44,20 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		this.fps = 0;
 		this.showFPS = false;
 		this.renderer = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
-		this.gameStatus = GameStatus.MAIN_MENU;
+
+		Game.gameStatus = GameStatus.MAIN_MENU;
+
+		this.mainMenu = new MainMenu();
 	}
 
-	public void updateGameStatus(GameStatus gameStatus) {
-		this.gameStatus = gameStatus;
+	public static void updateGameStatus(GameStatus gameStatus) {
+		Game.gameStatus = gameStatus;
 	}
 
 	private void tick() {
-		// Code
+		if (Game.gameStatus == GameStatus.MAIN_MENU) {
+			this.mainMenu.tick();
+		}
 	}
 
 	private void render() {
@@ -72,8 +80,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Graphics graphics = bs.getDrawGraphics();
 		graphics.drawImage(this.renderer, 0, 0, Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE, null);
 
-		if (this.gameStatus == GameStatus.MAIN_MENU) {
-			// Code
+		if (Game.gameStatus == GameStatus.MAIN_MENU) {
+			this.mainMenu.render(graphics);
 		}
 
 		if (this.showFPS) {
@@ -161,15 +169,15 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// Code
+		if (Game.gameStatus == GameStatus.MAIN_MENU) {
+			this.mainMenu.mousePressed(e);
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if (e.getButton() == MouseEvent.BUTTON1) {
-			if (this.gameStatus == GameStatus.MAIN_MENU) {
-				System.out.println("Hi!");
-			}
+		if (Game.gameStatus == GameStatus.MAIN_MENU) {
+			this.mainMenu.mouseReleased(e);
 		}
 	}
 

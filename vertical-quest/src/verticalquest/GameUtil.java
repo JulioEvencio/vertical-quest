@@ -4,8 +4,12 @@ import java.awt.Font;
 
 public class GameUtil {
 
+	public static Font getFontTitle() {
+		return new Font("Arial", Font.BOLD, 36);
+	}
+	
 	public static Font getFontDefault() {
-		return new Font("arial", Font.BOLD, 20);
+		return new Font("Arial", Font.BOLD, 20);
 	}
 
 }

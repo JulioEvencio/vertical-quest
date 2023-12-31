@@ -45,16 +45,12 @@ public class Button {
 		this.buttonIsPressed = false;
 	}
 
-	public static int getWidthPressed() {
-		return Button.widthPressed;
-	}
-
-	public static int getHeightPressed() {
-		return Button.heightPressed;
-	}
-
 	public String getText() {
 		return this.text;
+	}
+
+	public static int getWidthPressed() {
+		return Button.widthPressed;
 	}
 
 	public boolean wasClicked(int x, int y) {

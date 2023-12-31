@@ -9,34 +9,29 @@ import verticalquest.strings.StringError;
 
 public class Spritesheet {
 
-	private static BufferedImage spritesheet;
-	private static BufferedImage spritesheetGUI;
+	private static final BufferedImage spritesheet;
+	private static final BufferedImage spritesheetGUI;
 
-	public static BufferedImage getSprite(int x, int y, int width, int height) {
-		if (Spritesheet.spritesheet == null) {
-			try {
-				String path = null;
+	static {
+		BufferedImage auxSpritesheet = null;
+		BufferedImage auxSpritesheetGUI = null;
 
-				Spritesheet.spritesheet = ImageIO.read(Spritesheet.class.getResource(path));
-			} catch (Exception e) {
-				Game.exitWithError(StringError.ERROR_LOADING_SPRITES);
-			}
+		try {
+			auxSpritesheet = ImageIO.read(Spritesheet.class.getResource("/gui/gui.png"));
+			auxSpritesheetGUI = ImageIO.read(Spritesheet.class.getResource("/gui/gui.png"));
+		} catch (Exception e) {
+			Game.exitWithError(StringError.ERROR_LOADING_SPRITES);
 		}
 
+		spritesheet = auxSpritesheet;
+		spritesheetGUI = auxSpritesheetGUI;
+	}
+
+	public static BufferedImage getSprite(int x, int y, int width, int height) {
 		return Spritesheet.spritesheet.getSubimage(x, y, width, height);
 	}
 
 	public static BufferedImage getSpriteGUI(int x, int y, int width, int height) {
-		if (Spritesheet.spritesheetGUI == null) {
-			try {
-				String path = "/gui/gui.png";
-
-				Spritesheet.spritesheetGUI = ImageIO.read(Spritesheet.class.getResource(path));
-			} catch (Exception e) {
-				Game.exitWithError(StringError.ERROR_LOADING_SPRITES);
-			}
-		}
-
 		return Spritesheet.spritesheetGUI.getSubimage(x, y, width, height);
 	}
 
