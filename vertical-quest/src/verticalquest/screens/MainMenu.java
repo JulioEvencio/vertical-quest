@@ -31,9 +31,9 @@ public class MainMenu {
 
 		this.buttons = new ArrayList<>();
 
-		this.buttons.add(new Button("New Game", (Game.WIDTH - Button.getWidthPressed()) / 2, 100));
-		this.buttons.add(new Button("Credits", (Game.WIDTH - Button.getWidthPressed()) / 2, 200));
-		this.buttons.add(new Button("Exit", (Game.WIDTH - Button.getWidthPressed()) / 2, 300));
+		this.buttons.add(new Button("New Game", (Game.WIDTH - Button.getWidthPressed()) / 2, 150));
+		this.buttons.add(new Button("Credits", (Game.WIDTH - Button.getWidthPressed()) / 2, 250));
+		this.buttons.add(new Button("Exit", (Game.WIDTH - Button.getWidthPressed()) / 2, 350));
 
 		this.mousePressed = false;
 		this.mouseReleased = false;
@@ -84,7 +84,7 @@ public class MainMenu {
 
 		int titleWidth = render.getFontMetrics().stringWidth(StringGame.TITLE);
 
-		render.drawString(StringGame.TITLE, (Game.WIDTH - titleWidth) / 2, 70);
+		render.drawString(StringGame.TITLE, (Game.WIDTH - titleWidth) / 2, 100);
 
 		this.buttons.forEach(button -> button.render(render));
 	}
