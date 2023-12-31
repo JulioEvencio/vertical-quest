@@ -53,6 +53,10 @@ public class Button {
 		return Button.widthPressed;
 	}
 
+	public static int getHeightpressed() {
+		return Button.heightPressed;
+	}
+
 	public boolean wasClicked(int x, int y) {
 		return x >= this.x && x <= this.x + Button.widthPressed && y >= this.y && y <= this.y + Button.heightPressed;
 	}

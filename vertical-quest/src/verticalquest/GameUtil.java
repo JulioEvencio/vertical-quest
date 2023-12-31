@@ -9,7 +9,7 @@ public class GameUtil {
 	}
 	
 	public static Font getFontDefault() {
-		return new Font("Arial", Font.BOLD, 20);
+		return new Font("Arial", Font.BOLD, 16);
 	}
 
 }

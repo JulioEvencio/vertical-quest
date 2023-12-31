@@ -13,7 +13,9 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JOptionPane;
 
+import verticalquest.screens.Credits;
 import verticalquest.screens.MainMenu;
+import verticalquest.screens.Screen;
 import verticalquest.strings.StringError;
 
 public class Game extends Canvas implements Runnable, KeyListener, MouseListener {
@@ -33,7 +35,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	private static GameStatus gameStatus;
 
-	private final MainMenu mainMenu;
+	private final Screen mainMenu;
+	private final Screen credits;
 
 	public Game() {
 		this.addKeyListener(this);
@@ -48,6 +51,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Game.gameStatus = GameStatus.MAIN_MENU;
 
 		this.mainMenu = new MainMenu();
+		this.credits = new Credits();
 	}
 
 	public static void updateGameStatus(GameStatus gameStatus) {
@@ -57,6 +61,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private void tick() {
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			this.mainMenu.tick();
+		} else if (Game.gameStatus == GameStatus.CREDITS) {
+			this.credits.tick();
 		} else if (Game.gameStatus == GameStatus.EXIT) {
 			Game.exitGame();
 		}
@@ -84,6 +90,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			this.mainMenu.render(graphics);
+		} else if (Game.gameStatus == GameStatus.CREDITS) {
+			this.credits.render(graphics);
 		}
 
 		if (this.showFPS) {
@@ -173,6 +181,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public void mousePressed(MouseEvent e) {
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			this.mainMenu.mousePressed(e);
+		} else if (Game.gameStatus == GameStatus.CREDITS) {
+			this.credits.mousePressed(e);
 		}
 	}
 
@@ -180,6 +190,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public void mouseReleased(MouseEvent e) {
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			this.mainMenu.mouseReleased(e);
+		} else if (Game.gameStatus == GameStatus.CREDITS) {
+			this.credits.mouseReleased(e);
 		}
 	}
 
