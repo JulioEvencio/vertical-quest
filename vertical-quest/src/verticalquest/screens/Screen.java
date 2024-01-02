@@ -61,8 +61,6 @@ public abstract class Screen {
 		return this.clickY;
 	}
 
-	protected abstract void tick(Button button);
-
 	public void tick() {
 		if (this.mousePressed) {
 			this.buttons.forEach(button -> {
@@ -77,7 +75,7 @@ public abstract class Screen {
 		if (this.mouseReleased) {
 			this.buttons.forEach(button -> {
 				if (button.wasClicked(this.clickX, this.clickY)) {
-					this.tick(button);
+					button.onClick();
 				}
 
 				button.setButtonReleased();

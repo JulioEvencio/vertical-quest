@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import verticalquest.GameUtil;
+import verticalquest.gui.event.EventOnClick;
 import verticalquest.resources.Spritesheet;
 
 public class Button {
@@ -25,6 +26,8 @@ public class Button {
 	private static final BufferedImage spriteButtonPressed;
 	private static final BufferedImage spriteButtonReleased;
 
+	private final EventOnClick eventOnClick;
+
 	static {
 		widthPressed = 46 * 5;
 		heightPressed = 13 * 5;
@@ -36,13 +39,15 @@ public class Button {
 		spriteButtonReleased = Spritesheet.getSpriteGUI(145, 81, 46, 14);
 	}
 
-	public Button(String text, int x, int y) {
+	public Button(String text, int x, int y, EventOnClick eventOnClick) {
 		this.text = text;
 
 		this.x = x;
 		this.y = y;
 
 		this.buttonIsPressed = false;
+
+		this.eventOnClick = eventOnClick;
 	}
 
 	public String getText() {
@@ -55,6 +60,10 @@ public class Button {
 
 	public static int getHeightpressed() {
 		return Button.heightPressed;
+	}
+
+	public void onClick() {
+		this.eventOnClick.onClick();
 	}
 
 	public boolean wasClicked(int x, int y) {
@@ -71,9 +80,11 @@ public class Button {
 
 	public void render(Graphics render) {
 		if (this.buttonIsPressed) {
-			render.drawImage(Button.spriteButtonPressed, this.x, this.y, Button.widthPressed, Button.heightPressed, null);
+			render.drawImage(Button.spriteButtonPressed, this.x, this.y, Button.widthPressed, Button.heightPressed,
+					null);
 		} else {
-			render.drawImage(Button.spriteButtonReleased, this.x, this.y, Button.widthReleased, Button.heightReleased, null);
+			render.drawImage(Button.spriteButtonReleased, this.x, this.y, Button.widthReleased, Button.heightReleased,
+					null);
 		}
 
 		render.setColor(Color.WHITE);
