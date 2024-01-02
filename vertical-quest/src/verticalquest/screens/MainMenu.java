@@ -3,11 +3,12 @@ package verticalquest.screens;
 import verticalquest.Game;
 import verticalquest.GameStatus;
 import verticalquest.gui.Button;
+import verticalquest.strings.StringGame;
 
 public class MainMenu extends Screen {
 
 	public MainMenu() {
-		super();
+		super(StringGame.TITLE);
 
 		super.getButtons().add(new Button("New Game", (Game.WIDTH - Button.getWidthPressed()) / 2, 150));
 		super.getButtons().add(new Button("Credits", (Game.WIDTH - Button.getWidthPressed()) / 2, 250));

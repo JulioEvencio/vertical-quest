@@ -12,11 +12,12 @@ import verticalquest.GameUtil;
 import verticalquest.gui.Button;
 import verticalquest.gui.Text;
 import verticalquest.resources.Spritesheet;
-import verticalquest.strings.StringGame;
 
 public abstract class Screen {
 
 	private static final BufferedImage background;
+
+	private final String title;
 
 	private final List<Text> texts;
 	private final List<Button> buttons;
@@ -31,7 +32,9 @@ public abstract class Screen {
 		background = Spritesheet.getSpriteGUI(97, 37, 24, 22);
 	}
 
-	public Screen() {
+	public Screen(String title) {
+		this.title = title;
+
 		this.texts = new ArrayList<>();
 		this.buttons = new ArrayList<>();
 
@@ -90,9 +93,9 @@ public abstract class Screen {
 		render.setColor(Color.WHITE);
 		render.setFont(GameUtil.getFontTitle());
 
-		int titleWidth = render.getFontMetrics().stringWidth(StringGame.TITLE);
+		int titleWidth = render.getFontMetrics().stringWidth(this.title);
 
-		render.drawString(StringGame.TITLE, (Game.WIDTH - titleWidth) / 2, 100);
+		render.drawString(this.title, (Game.WIDTH - titleWidth) / 2, 100);
 
 		this.texts.forEach(text -> text.render(render));
 		this.buttons.forEach(button -> button.render(render));
