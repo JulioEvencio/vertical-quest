@@ -1,0 +1,2 @@
+Erro
+Erro ao carregar sprites

@@ -12,7 +12,7 @@ public class Main {
 			JFrame frame = new JFrame();
 			Game game = new Game();
 
-			frame.setTitle(StringGame.TITLE);
+			frame.setTitle(StringGame.TITLE.getValue());
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.add(game);
 			frame.setResizable(false);

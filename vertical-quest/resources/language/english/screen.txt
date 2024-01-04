@@ -1,0 +1,8 @@
+New Game
+Credits
+Exit
+Programmer: Júlio Igreja
+Github: https://github.com/JulioEvencio
+Sprites: Mounir Tohami
+itch.io: https://mounirtohami.itch.io/
+Back

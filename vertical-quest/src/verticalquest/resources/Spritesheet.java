@@ -20,7 +20,7 @@ public class Spritesheet {
 			auxSpritesheet = ImageIO.read(Spritesheet.class.getResource("/gui/gui.png"));
 			auxSpritesheetGUI = ImageIO.read(Spritesheet.class.getResource("/gui/gui.png"));
 		} catch (Exception e) {
-			Game.exitWithError(StringError.ERROR_LOADING_SPRITES);
+			Game.exitWithError(StringError.ERROR_LOADING_SPRITES.getValue());
 		}
 
 		spritesheet = auxSpritesheet;
