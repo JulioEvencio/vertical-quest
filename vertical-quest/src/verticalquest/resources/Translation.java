@@ -30,7 +30,8 @@ public class Translation {
 		try {
 			Translation.toTranslation("error", new MessageString[] {
 				StringError.ERROR,
-				StringError.ERROR_LOADING_SPRITES
+				StringError.ERROR_LOADING_SPRITES,
+				StringError.ERROR_LOADING_AUDIO
 			});
 			
 			Translation.toTranslation("screen", new MessageString[] {
