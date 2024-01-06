@@ -193,6 +193,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		if (e.getKeyCode() == KeyEvent.VK_F3) {
 			this.showFPS = !this.showFPS;
 		}
+
+		if (e.getKeyCode() == KeyEvent.VK_F4) {
+			this.enableAudio = !this.enableAudio;
+		}
 	}
 
 	@Override
