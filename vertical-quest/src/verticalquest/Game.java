@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JOptionPane;
 
+import verticalquest.resources.Audio;
 import verticalquest.screens.Credits;
 import verticalquest.screens.MainMenu;
 import verticalquest.screens.Screen;
@@ -40,6 +41,15 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private static Screen mainMenu;
 	private static Screen credits;
 
+	private boolean enableAudio;
+	private static Audio audioNow;
+
+	private static final Audio audioMenu;
+
+	static {
+		audioMenu = new Audio("/audios/menu.wav");
+	}
+
 	public Game() {
 		this.addKeyListener(this);
 		this.addMouseListener(this);
@@ -52,6 +62,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		Game.gameStatus = GameStatus.SELECT_LANGUAGE;
 
+		this.enableAudio = true;
+
+		Game.updateAudio(Game.audioMenu);
 		Game.initializeGame();
 	}
 
@@ -65,7 +78,21 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Game.gameStatus = gameStatus;
 	}
 
+	public static void updateAudio(Audio audio) {
+		if (Game.audioNow != null) {
+			Game.audioNow.stop();
+		}
+
+		Game.audioNow = audio;
+	}
+
 	private void tick() {
+		if (this.enableAudio) {
+			Game.audioNow.play();
+		} else {
+			Game.audioNow.stop();
+		}
+
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.tick();
 		} else if (Game.gameStatus == GameStatus.CREDITS) {
