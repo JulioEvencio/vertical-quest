@@ -104,7 +104,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			Game.audioNow.stop();
 		}
 
-		if (Game.gameStatus == GameStatus.NEW_GAME) {
+		if (Game.gameStatus == GameStatus.RUN) {
 			Game.scenario.tick();
 		} else if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.tick();
@@ -130,7 +130,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		render.setColor(Color.BLACK);
 		render.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 
-		if (Game.gameStatus == GameStatus.NEW_GAME) {
+		if (Game.gameStatus == GameStatus.RUN) {
 			Game.scenario.render(render);
 		}
 
@@ -200,14 +200,14 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (Game.gameStatus == GameStatus.NEW_GAME) {
+		if (Game.gameStatus == GameStatus.RUN) {
 			Game.scenario.keyPressed(e);
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (Game.gameStatus == GameStatus.NEW_GAME) {
+		if (Game.gameStatus == GameStatus.RUN) {
 			Game.scenario.keyReleased(e);
 		}
 
