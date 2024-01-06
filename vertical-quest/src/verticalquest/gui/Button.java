@@ -80,11 +80,9 @@ public class Button {
 
 	public void render(Graphics render) {
 		if (this.buttonIsPressed) {
-			render.drawImage(Button.spriteButtonPressed, this.x, this.y, Button.widthPressed, Button.heightPressed,
-					null);
+			render.drawImage(Button.spriteButtonPressed, this.x, this.y, Button.widthPressed, Button.heightPressed, null);
 		} else {
-			render.drawImage(Button.spriteButtonReleased, this.x, this.y, Button.widthReleased, Button.heightReleased,
-					null);
+			render.drawImage(Button.spriteButtonReleased, this.x, this.y, Button.widthReleased, Button.heightReleased, null);
 		}
 
 		render.setColor(Color.WHITE);

@@ -14,6 +14,8 @@ import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 
 import verticalquest.resources.Audio;
+import verticalquest.scenarios.Level01;
+import verticalquest.scenarios.Scenario;
 import verticalquest.screens.Credits;
 import verticalquest.screens.MainMenu;
 import verticalquest.screens.Screen;
@@ -40,6 +42,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private static Screen selectLanguage;
 	private static Screen mainMenu;
 	private static Screen credits;
+
+	private static Scenario scenario;
 
 	private boolean enableAudio;
 	private static Audio audioNow;
@@ -72,6 +76,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Game.selectLanguage = new SelectLanguage();
 		Game.mainMenu = new MainMenu();
 		Game.credits = new Credits();
+
+		Game.scenario = new Level01();
 	}
 
 	public static void updateGameStatus(GameStatus gameStatus) {
@@ -93,7 +99,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			Game.audioNow.stop();
 		}
 
-		if (Game.gameStatus == GameStatus.MAIN_MENU) {
+		if (Game.gameStatus == GameStatus.NEW_GAME) {
+			Game.scenario.tick();
+		} else if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.tick();
 		} else if (Game.gameStatus == GameStatus.CREDITS) {
 			Game.credits.tick();
@@ -117,7 +125,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		render.setColor(Color.BLACK);
 		render.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 
-		// Code
+		if (Game.gameStatus == GameStatus.NEW_GAME) {
+			Game.scenario.render(render);
+		}
 
 		render.dispose();
 
