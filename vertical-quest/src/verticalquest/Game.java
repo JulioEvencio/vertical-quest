@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JOptionPane;
 
+import verticalquest.entities.Player;
 import verticalquest.resources.Audio;
 import verticalquest.scenarios.Level01;
 import verticalquest.scenarios.Scenario;
@@ -45,6 +46,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	private static Scenario scenario;
 
+	private static Player player;
+
 	private boolean enableAudio;
 	private static Audio audioNow;
 
@@ -73,11 +76,13 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 
 	public static void initializeGame() {
+		Game.player = new Player();
+
 		Game.selectLanguage = new SelectLanguage();
 		Game.mainMenu = new MainMenu();
 		Game.credits = new Credits();
 
-		Game.scenario = new Level01();
+		Game.scenario = new Level01(Game.player);
 	}
 
 	public static void updateGameStatus(GameStatus gameStatus) {
@@ -195,11 +200,17 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// Code
+		if (Game.gameStatus == GameStatus.NEW_GAME) {
+			Game.scenario.keyPressed(e);
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		if (Game.gameStatus == GameStatus.NEW_GAME) {
+			Game.scenario.keyReleased(e);
+		}
+
 		if (e.getKeyCode() == KeyEvent.VK_F3) {
 			this.showFPS = !this.showFPS;
 		}
