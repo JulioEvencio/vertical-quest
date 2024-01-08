@@ -2,6 +2,8 @@ package verticalquest.entities;
 
 import java.awt.Color;
 
+import verticalquest.utils.Rect;
+
 public class Player extends Entity {
 
 	private boolean up;
@@ -42,20 +44,22 @@ public class Player extends Entity {
 
 	@Override
 	public void tick() {
-		if (this.up && super.scenario.isFree(this, EntityMove.UP)) {
+		Rect rect = new Rect((int) super.x, (int) super.y, super.width, super.height);
+
+		if (super.scenario.isFree(new Rect(rect.x, rect.y + 3, rect.width, rect.height))) {
+			this.y += 3.0;
+		}
+
+		if (this.up && super.scenario.isFree(new Rect(rect.x, rect.y, rect.width, rect.height))) {
 			// Code
 		}
 
-		if (this.right && super.scenario.isFree(this, EntityMove.RIGHT)) {
+		if (this.right && super.scenario.isFree(new Rect(rect.x, rect.y, rect.width, rect.height))) {
 			this.x += this.speed;
 		}
 
-		if (this.left && super.scenario.isFree(this, EntityMove.LEFT)) {
+		if (this.left && super.scenario.isFree(new Rect(rect.x, rect.y, rect.width, rect.height))) {
 			this.x -= this.speed;
-		}
-
-		if (super.scenario.isFree(this, EntityMove.DOWN)) {
-			// Code
 		}
 	}
 

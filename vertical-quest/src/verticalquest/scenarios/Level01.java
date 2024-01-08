@@ -1,11 +1,11 @@
 package verticalquest.scenarios;
 
 import verticalquest.Game;
-import verticalquest.entities.Entity;
-import verticalquest.entities.EntityMove;
 import verticalquest.entities.Player;
 import verticalquest.resources.Spritesheet;
 import verticalquest.tiles.Floor;
+import verticalquest.tiles.Tile;
+import verticalquest.utils.Rect;
 
 public class Level01 extends Scenario {
 
@@ -20,7 +20,13 @@ public class Level01 extends Scenario {
 	}
 
 	@Override
-	public boolean isFree(Entity entity, EntityMove entityMove) {
+	public boolean isFree(Rect rect) {
+		for (Tile tile : super.tiles) {
+			if (tile.getRect().isColliding(rect)) {
+				return false;
+			}
+		}
+
 		return true;
 	}
 

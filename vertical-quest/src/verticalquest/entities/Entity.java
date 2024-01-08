@@ -10,8 +10,8 @@ public abstract class Entity {
 	protected double x;
 	protected double y;
 
-	private final int width;
-	private final int height;
+	protected final int width;
+	protected final int height;
 
 	protected final double speed;
 

@@ -6,10 +6,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import verticalquest.entities.Entity;
-import verticalquest.entities.EntityMove;
 import verticalquest.entities.Player;
 import verticalquest.tiles.Tile;
+import verticalquest.utils.Rect;
 
 public abstract class Scenario {
 
@@ -35,7 +34,7 @@ public abstract class Scenario {
 		this.player.setScenario(this);
 	}
 
-	public abstract boolean isFree(Entity entity, EntityMove entityMove);
+	public abstract boolean isFree(Rect rect);
 
 	public void tick() {
 		this.player.tick();
