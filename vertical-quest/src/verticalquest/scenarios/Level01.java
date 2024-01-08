@@ -16,6 +16,9 @@ public class Level01 extends Scenario {
 			super.tiles.add(new Floor(50 * i, Game.HEIGHT - 50));
 		}
 
+		super.tiles.add(new Floor(0, Game.HEIGHT - 100));
+		super.tiles.add(new Floor(Game.WIDTH - 50, Game.HEIGHT - 100));
+
 		super.player.setPosition(200, 200);
 	}
 
