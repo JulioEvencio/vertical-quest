@@ -3,10 +3,13 @@ package verticalquest.scenarios;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 import verticalquest.entities.Entity;
 import verticalquest.entities.EntityMove;
 import verticalquest.entities.Player;
+import verticalquest.tiles.Tile;
 
 public abstract class Scenario {
 
@@ -15,6 +18,8 @@ public abstract class Scenario {
 
 	private final BufferedImage background;
 
+	protected final List<Tile> tiles;
+
 	protected final Player player;
 
 	public Scenario(int width, int height, BufferedImage background, Player player) {
@@ -22,6 +27,8 @@ public abstract class Scenario {
 		this.height = height;
 
 		this.background = background;
+
+		this.tiles = new ArrayList<>();
 
 		this.player = player;
 
@@ -36,6 +43,8 @@ public abstract class Scenario {
 
 	public void render(Graphics render) {
 		render.drawImage(this.background, 0, 0, this.width, this.height, null);
+
+		this.tiles.forEach(tile -> tile.render(render));
 
 		this.player.render(render);
 	}
