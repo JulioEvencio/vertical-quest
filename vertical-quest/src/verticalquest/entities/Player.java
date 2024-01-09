@@ -44,20 +44,24 @@ public class Player extends Entity {
 
 	@Override
 	public void tick() {
-		if (super.scenario.isFree(new Rect((int) super.x, (int) (super.y + 5.0), super.width, super.height))) {
-			this.y += 5.0;
+		for (int i = 0; i < 8; i++) {
+			if (super.scenario.isFree(new Rect((int) super.x, (int) (super.y + 1.0), super.width, super.height))) {
+				this.y += 1.0;
+			} else {
+				break;
+			}
 		}
 
 		if (this.up && super.scenario.isFree(new Rect((int) super.x, (int) super.y, super.width, super.height))) {
 			// Code
 		}
 
-		if (this.right && super.scenario.isFree(new Rect((int) (super.x + this.speed), (int) super.y, super.width, super.height))) {
-			this.x += this.speed;
+		if (this.right && super.scenario.isFree(new Rect((int) (super.x + super.speed), (int) super.y, super.width, super.height))) {
+			this.x += super.speed;
 		}
 
-		if (this.left && super.scenario.isFree(new Rect((int) (super.x - this.speed), (int) super.y, super.width, super.height))) {
-			this.x -= this.speed;
+		if (this.left && super.scenario.isFree(new Rect((int) (super.x - super.speed), (int) super.y, super.width, super.height))) {
+			this.x -= super.speed;
 		}
 	}
 
