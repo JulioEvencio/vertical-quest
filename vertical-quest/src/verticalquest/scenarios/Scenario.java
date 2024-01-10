@@ -49,6 +49,10 @@ public abstract class Scenario {
 	}
 
 	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_W) {
+			this.player.moveUp();
+		}
+
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			this.player.moveRight();
 		}
@@ -59,6 +63,10 @@ public abstract class Scenario {
 	}
 
 	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_W) {
+			this.player.stopUp();
+		}
+
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			this.player.stopRight();
 		}
