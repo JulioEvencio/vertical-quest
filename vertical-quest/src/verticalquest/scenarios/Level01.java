@@ -1,5 +1,7 @@
 package verticalquest.scenarios;
 
+import java.awt.event.KeyEvent;
+
 import verticalquest.Game;
 import verticalquest.entities.Player;
 import verticalquest.resources.Spritesheet;
@@ -18,7 +20,7 @@ public class Level01 extends Scenario {
 
 		super.tiles.add(new Floor(0, Game.HEIGHT - 100));
 		super.tiles.add(new Floor(Game.WIDTH - 50, Game.HEIGHT - 100));
-		
+
 		super.tiles.add(new Floor(Game.WIDTH - 200, Game.HEIGHT - 200));
 
 		super.player.setPosition(200, 200);
@@ -33,6 +35,15 @@ public class Level01 extends Scenario {
 		}
 
 		return true;
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		super.keyReleased(e);
+
+		if (e.getKeyCode() == KeyEvent.VK_R) {
+			Game.restart(new Level01(this.player));
+		}
 	}
 
 }

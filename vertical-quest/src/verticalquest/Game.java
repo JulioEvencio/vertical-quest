@@ -40,6 +40,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	private static GameStatus gameStatus;
 
+	private static Scenario scenarioRestart;
+
 	private static Screen selectLanguage;
 	private static Screen mainMenu;
 	private static Screen credits;
@@ -85,6 +87,11 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Game.scenario = new Level01(Game.player);
 	}
 
+	public static void restart(Scenario scenario) {
+		Game.scenarioRestart = scenario;
+		Game.gameStatus = GameStatus.RESTART;
+	}
+
 	public static void updateGameStatus(GameStatus gameStatus) {
 		Game.gameStatus = gameStatus;
 	}
@@ -114,6 +121,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			Game.selectLanguage.tick();
 		} else if (Game.gameStatus == GameStatus.EXIT) {
 			Game.exitGame();
+		} else if (Game.gameStatus == GameStatus.RESTART) {
+			Game.scenario = Game.scenarioRestart;
+			Game.scenarioRestart = null;
+			Game.gameStatus = GameStatus.RUN;
 		}
 	}
 
