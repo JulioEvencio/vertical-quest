@@ -20,7 +20,7 @@ public class Player extends Entity {
 		this.left = false;
 
 		this.isJump = false;
-		this.jumpHeight = 80;
+		this.jumpHeight = 75;
 		this.jumpFrames = 0;
 	}
 
