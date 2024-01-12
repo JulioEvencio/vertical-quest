@@ -89,6 +89,22 @@ public class Player extends Entity {
 		}
 	}
 
+	private void toRight() {
+		for (int i = 0; i < super.speed; i++) {
+			if (this.right && super.scenario.isFree(new Rect((int) (super.x + 1.0), (int) super.y, super.width, super.height))) {
+				this.x += 1.0;
+			}
+		}
+	}
+
+	private void toLeft() {
+		for (int i = 0; i < super.speed; i++) {
+			if (this.left && super.scenario.isFree(new Rect((int) (super.x - 1.0), (int) super.y, super.width, super.height))) {
+				this.x -= 1.0;
+			}
+		}
+	}
+
 	@Override
 	public void tick() {
 		if (this.isJump) {
@@ -97,13 +113,8 @@ public class Player extends Entity {
 			this.applyGravity();
 		}
 
-		if (this.right && super.scenario.isFree(new Rect((int) (super.x + super.speed), (int) super.y, super.width, super.height))) {
-			this.x += super.speed;
-		}
-
-		if (this.left && super.scenario.isFree(new Rect((int) (super.x - super.speed), (int) super.y, super.width, super.height))) {
-			this.x -= super.speed;
-		}
+		this.toRight();
+		this.toLeft();
 	}
 
 }
