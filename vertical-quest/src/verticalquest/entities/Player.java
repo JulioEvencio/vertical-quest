@@ -20,18 +20,14 @@ public class Player extends Entity {
 		this.left = false;
 
 		this.isJump = false;
-		this.jumpHeight = 130;
+		this.jumpHeight = 80;
 		this.jumpFrames = 0;
 	}
 
 	public void moveUp() {
-		if (!this.isJump) {
+		if (!this.isJump && !super.scenario.isFree(new Rect((int) super.x, (int) (super.y + 1), super.width, super.height))) {
 			this.isJump = true;
 		}
-	}
-
-	public void stopUp() {
-		// this.isJump = false;
 	}
 
 	public void moveRight() {
@@ -52,19 +48,46 @@ public class Player extends Entity {
 
 	private void applyGravity() {
 		super.speedY += this.scenario.gravity;
+		
+		if (super.speedY > 8) {
+			super.speedY = 8;
+		}
 
 		for (int i = 0; i < super.speedY; i++) {
-			if (super.scenario.isFree(new Rect((int) super.x, (int) (super.y + 1), super.width, super.height))) {
-				super.y += 1;
+			if (super.scenario.isFree(new Rect((int) super.x, (int) (super.y + 1.0), super.width, super.height))) {
+				super.y += 1.0;
 			} else {
 				super.speedY = 0;
 			}
 		}
 	}
 
+	private void toJump() {
+		super.speedY += this.scenario.gravity;
+		
+		if (super.speedY > 8) {
+			super.speedY = 8;
+		}
+
+		for (int i = 0; i < super.speedY; i++) {
+			if (this.jumpFrames < this.jumpHeight && super.scenario.isFree(new Rect((int) super.x, (int) (super.y - 1.0), super.width, super.height))) {
+				super.y -= 1.0;
+				this.jumpFrames++;
+			} else {
+				super.speedY = 0;
+				this.jumpFrames = 0;
+				this.isJump = false;
+			}
+		}
+	}
+
 	@Override
 	public void tick() {
-		this.applyGravity();
+		if (this.isJump) {
+			this.toJump();
+		} else {
+			this.applyGravity();
+		}
 
 		if (this.right && super.scenario
 				.isFree(new Rect((int) (super.x + super.speed), (int) super.y, super.width, super.height))) {
