@@ -48,7 +48,7 @@ public class Player extends Entity {
 
 	private void applyGravity() {
 		super.speedY += this.scenario.gravity;
-		
+
 		if (super.speedY > 8) {
 			super.speedY = 8;
 		}
@@ -63,10 +63,18 @@ public class Player extends Entity {
 	}
 
 	private void toJump() {
-		super.speedY += this.scenario.gravity;
-		
-		if (super.speedY > 8) {
+		if (this.jumpFrames < 9) {
 			super.speedY = 8;
+		} else if (this.jumpFrames < 18) {
+			super.speedY = 7;
+		} else if (this.jumpFrames < 27) {
+			super.speedY = 6;
+		} else if (this.jumpFrames < 36) {
+			super.speedY = 5;
+		} else if (this.jumpFrames < 45) {
+			super.speedY = 4;
+		} else {
+			super.speedY = 3;
 		}
 
 		for (int i = 0; i < super.speedY; i++) {
@@ -89,13 +97,11 @@ public class Player extends Entity {
 			this.applyGravity();
 		}
 
-		if (this.right && super.scenario
-				.isFree(new Rect((int) (super.x + super.speed), (int) super.y, super.width, super.height))) {
+		if (this.right && super.scenario.isFree(new Rect((int) (super.x + super.speed), (int) super.y, super.width, super.height))) {
 			this.x += super.speed;
 		}
 
-		if (this.left && super.scenario
-				.isFree(new Rect((int) (super.x - super.speed), (int) super.y, super.width, super.height))) {
+		if (this.left && super.scenario.isFree(new Rect((int) (super.x - super.speed), (int) super.y, super.width, super.height))) {
 			this.x -= super.speed;
 		}
 	}
