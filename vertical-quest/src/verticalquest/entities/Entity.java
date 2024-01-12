@@ -14,6 +14,7 @@ public abstract class Entity {
 	protected final int height;
 
 	protected final double speed;
+	protected double speedY;
 
 	private final Color color;
 
@@ -27,6 +28,7 @@ public abstract class Entity {
 		this.height = height;
 
 		this.speed = speed;
+		this.speedY = 0;
 
 		this.color = color;
 	}

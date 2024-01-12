@@ -21,6 +21,8 @@ public abstract class Scenario {
 
 	protected final Player player;
 
+	public final double gravity;
+
 	public Scenario(int width, int height, BufferedImage background, Player player) {
 		this.width = width;
 		this.height = height;
@@ -32,6 +34,8 @@ public abstract class Scenario {
 		this.player = player;
 
 		this.player.setScenario(this);
+
+		this.gravity = 0.5;
 	}
 
 	public abstract boolean isFree(Rect rect);
