@@ -9,6 +9,8 @@ public class Player extends Entity {
 	private boolean right;
 	private boolean left;
 
+	private boolean keyJump;
+	
 	private boolean isJump;
 	private final int jumpHeight;
 	private int jumpFrames;
@@ -19,15 +21,22 @@ public class Player extends Entity {
 		this.right = false;
 		this.left = false;
 
+		this.keyJump = false;
+		
 		this.isJump = false;
 		this.jumpHeight = 75;
 		this.jumpFrames = 0;
 	}
 
 	public void moveUp() {
-		if (!this.isJump && !super.scenario.isFree(new Rect((int) super.x, (int) (super.y + 1), super.width, super.height))) {
+		if (!this.keyJump && !this.isJump && !super.scenario.isFree(new Rect((int) super.x, (int) (super.y + 1), super.width, super.height))) {
+			this.keyJump = true;
 			this.isJump = true;
 		}
+	}
+	
+	public void stopUp() {
+		this.keyJump = false;
 	}
 
 	public void moveRight() {

@@ -67,6 +67,10 @@ public abstract class Scenario {
 	}
 
 	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_UP) {
+			this.player.stopUp();
+		}
+
 		if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			this.player.stopRight();
 		}
