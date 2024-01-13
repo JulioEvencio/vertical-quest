@@ -16,7 +16,7 @@ public class Player extends Entity {
 	private int jumpFrames;
 
 	public Player() {
-		super(0, 0, 50, 50, 3.0, Color.BLUE);
+		super(0, 0, 50, 50, 3.0, new Color(192, 203, 220));
 
 		this.right = false;
 		this.left = false;

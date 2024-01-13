@@ -33,6 +33,14 @@ public abstract class Entity {
 		this.color = color;
 	}
 
+	public double getX() {
+		return this.x;
+	}
+
+	public double getY() {
+		return this.y;
+	}
+
 	public void setScenario(Scenario scenario) {
 		this.scenario = scenario;
 	}
