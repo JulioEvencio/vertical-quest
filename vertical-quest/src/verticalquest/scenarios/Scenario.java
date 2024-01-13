@@ -6,17 +6,24 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import verticalquest.Game;
 import verticalquest.entities.Player;
+import verticalquest.entities.Portal;
+import verticalquest.tiles.Ceiling;
+import verticalquest.tiles.Floor;
 import verticalquest.tiles.PlayerClone;
 import verticalquest.tiles.Tile;
+import verticalquest.tiles.Wall;
 import verticalquest.utils.Rect;
 
 public abstract class Scenario {
 
-	private final int width;
-	private final int height;
+	protected final int width;
+	protected final int height;
 
 	private final BufferedImage background;
+
+	protected final Portal portal;
 
 	protected final List<Tile> tiles;
 
@@ -27,11 +34,13 @@ public abstract class Scenario {
 	private boolean keySpace;
 	private boolean pressedSpace;
 
-	public Scenario(int width, int height, BufferedImage background, Player player) {
+	public Scenario(int width, int height, BufferedImage background, Portal portal, Player player) {
 		this.width = width;
 		this.height = height;
 
 		this.background = background;
+
+		this.portal = portal;
 
 		this.tiles = new ArrayList<>();
 
@@ -43,16 +52,44 @@ public abstract class Scenario {
 
 		this.keySpace = false;
 		this.pressedSpace = false;
-	}
 
-	public abstract boolean isFree(Rect rect);
+		for (int i = 0; i < (this.height / 50) + 1; i++) {
+			this.tiles.add(new Wall(0, 50 * i));
+			this.tiles.add(new Wall(this.width - 50, 50 * i));
+		}
+
+		for (int i = 0; i < (this.width / 50) + 1; i++) {
+			this.tiles.add(new Ceiling(50 * i, 0));
+			this.tiles.add(new Floor(50 * i, this.height - 50));
+		}
+
+		this.setPosition();
+	}
 
 	protected abstract void setPosition();
 
 	protected abstract boolean canGenerateClone();
 
+	protected abstract void nextLevel();
+
+	protected abstract Scenario getCurrentScenario();
+
+	public boolean isFree(Rect rect) {
+		for (Tile tile : this.tiles) {
+			if (tile.getRect().isColliding(rect)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	public void tick() {
 		this.player.tick();
+
+		if (this.portal.nextLevel(this.player)) {
+			this.nextLevel();
+		}
 
 		if (this.pressedSpace) {
 			if (this.canGenerateClone()) {
@@ -69,6 +106,8 @@ public abstract class Scenario {
 		render.drawImage(this.background, 0, 0, this.width, this.height, null);
 
 		this.tiles.forEach(tile -> tile.render(render));
+
+		this.portal.render(render);
 
 		this.player.render(render);
 	}
@@ -107,6 +146,10 @@ public abstract class Scenario {
 
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			this.keySpace = false;
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_R) {
+			Game.restart(this.getCurrentScenario());
 		}
 	}
 

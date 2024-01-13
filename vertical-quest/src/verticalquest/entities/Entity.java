@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import verticalquest.scenarios.Scenario;
+import verticalquest.utils.Rect;
 
 public abstract class Entity {
 
@@ -39,6 +40,10 @@ public abstract class Entity {
 
 	public double getY() {
 		return this.y;
+	}
+
+	public Rect getRect() {
+		return new Rect((int) this.x, (int) this.y, this.width, this.height);
 	}
 
 	public void setScenario(Scenario scenario) {
