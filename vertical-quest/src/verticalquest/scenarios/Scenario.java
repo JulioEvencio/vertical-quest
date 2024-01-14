@@ -16,6 +16,7 @@ import verticalquest.tiles.PlayerClone;
 import verticalquest.tiles.Tile;
 import verticalquest.tiles.Wall;
 import verticalquest.utils.Rect;
+import verticalquest.utils.StringRender;
 
 public abstract class Scenario {
 
@@ -28,6 +29,7 @@ public abstract class Scenario {
 	protected final Portal portal;
 
 	protected final List<Tile> tiles;
+	protected final List<StringRender> strings;
 
 	protected final Player player;
 
@@ -46,6 +48,7 @@ public abstract class Scenario {
 		this.portal = portal;
 
 		this.tiles = new ArrayList<>();
+		this.strings = new ArrayList<>();
 
 		this.player = player;
 
@@ -66,8 +69,11 @@ public abstract class Scenario {
 			this.tiles.add(new Floor(50 * i, this.height - 50));
 		}
 
+		this.setStrings();
 		this.playerSetPosition();
 	}
+
+	protected abstract void setStrings();
 
 	protected abstract void playerSetPosition();
 
@@ -105,6 +111,8 @@ public abstract class Scenario {
 
 	public void render(Graphics render) {
 		render.drawImage(this.background, 0, 0, this.width, this.height, null);
+
+		this.strings.forEach(string -> string.render(render));
 
 		this.tiles.forEach(tile -> tile.render(render));
 
