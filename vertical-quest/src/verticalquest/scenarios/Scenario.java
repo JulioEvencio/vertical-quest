@@ -9,7 +9,7 @@ import java.util.List;
 import verticalquest.Game;
 import verticalquest.entities.Player;
 import verticalquest.entities.Portal;
-import verticalquest.entities.Spawn;
+import verticalquest.entities.ZoneSpawn;
 import verticalquest.tiles.Ceiling;
 import verticalquest.tiles.Floor;
 import verticalquest.tiles.PlayerClone;
@@ -24,7 +24,7 @@ public abstract class Scenario {
 
 	private final BufferedImage background;
 
-	protected final Spawn spawn;
+	protected final ZoneSpawn spawn;
 	protected final Portal portal;
 
 	protected final List<Tile> tiles;
@@ -36,7 +36,7 @@ public abstract class Scenario {
 	private boolean keySpace;
 	private boolean pressedSpace;
 
-	public Scenario(int width, int height, BufferedImage background, Spawn spawn, Portal portal, Player player) {
+	public Scenario(int width, int height, BufferedImage background, ZoneSpawn spawn, Portal portal, Player player) {
 		this.width = width;
 		this.height = height;
 
@@ -66,12 +66,10 @@ public abstract class Scenario {
 			this.tiles.add(new Floor(50 * i, this.height - 50));
 		}
 
-		this.setPosition();
+		this.playerSetPosition();
 	}
 
-	protected abstract void setPosition();
-
-	protected abstract boolean canGenerateClone();
+	protected abstract void playerSetPosition();
 
 	protected abstract void nextLevel();
 
@@ -98,7 +96,7 @@ public abstract class Scenario {
 			if (!this.spawn.getRect().isColliding(this.player.getRect())) {
 				this.tiles.add(new PlayerClone((int) this.player.getX(), (int) this.player.getY()));
 
-				this.setPosition();
+				this.playerSetPosition();
 			}
 
 			this.pressedSpace = false;

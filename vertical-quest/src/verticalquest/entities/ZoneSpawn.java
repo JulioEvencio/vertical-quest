@@ -5,12 +5,12 @@ import java.awt.Graphics;
 
 import verticalquest.utils.Rect;
 
-public class Spawn {
+public class ZoneSpawn {
 
 	private final Rect rect;
 	private final Color color;
 
-	public Spawn(int x, int y) {
+	public ZoneSpawn(int x, int y) {
 		this.rect = new Rect(x, y, 150, 100);
 		this.color = new Color(84, 245, 113, 50);
 	}
