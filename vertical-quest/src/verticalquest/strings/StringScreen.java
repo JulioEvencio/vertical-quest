@@ -10,6 +10,8 @@ public class StringScreen {
 	public static final MessageString CREDITS = new MessageString("Credits");
 	public static final MessageString EXIT = new MessageString("Exit");
 
+	public static final MessageString PAUSE = new MessageString("Pause");
+
 	public static final MessageString CONTINUE = new MessageString("Continue");
 	public static final MessageString MENU = new MessageString("Menu");
 

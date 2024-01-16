@@ -86,7 +86,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Game.mainMenu = new MainMenu();
 		Game.pause = new Pause();
 		Game.credits = new Credits();
+	}
 
+	public static void startGame() {
 		Game.scenario = new Level01(Game.player);
 	}
 

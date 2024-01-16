@@ -10,7 +10,7 @@ import verticalquest.strings.StringScreen;
 public class Pause extends Screen {
 
 	public Pause() {
-		super("Pause");
+		super(StringScreen.PAUSE.getValue());
 
 		super.getButtons().add(new Button(StringScreen.CONTINUE.getValue(), (Game.WIDTH - Button.getWidthPressed()) / 2, 150, () -> Game.updateGameStatus(GameStatus.RUN)));
 		super.getButtons().add(new Button(StringScreen.MENU.getValue(), (Game.WIDTH - Button.getWidthPressed()) / 2, 250, () -> Game.updateGameStatus(GameStatus.MAIN_MENU)));
