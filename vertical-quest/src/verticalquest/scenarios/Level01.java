@@ -7,7 +7,7 @@ import verticalquest.entities.Player;
 import verticalquest.entities.Portal;
 import verticalquest.entities.ZoneSpawn;
 import verticalquest.resources.Spritesheet;
-import verticalquest.strings.StringLevel01;
+import verticalquest.strings.StringLevel;
 import verticalquest.utils.StringRender;
 
 public class Level01 extends Scenario {
@@ -18,9 +18,9 @@ public class Level01 extends Scenario {
 
 	@Override
 	protected void setStrings() {
-		super.strings.add(new StringRender(StringLevel01.LEVEL01.getValue(), 80, 80, Color.WHITE));
-		super.strings.add(new StringRender(StringLevel01.TUTORIAL_MOVE.getValue(), 80, 120, Color.WHITE));
-		super.strings.add(new StringRender(StringLevel01.GOAL.getValue(), 80, 160, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.LEVEL_01.getValue(), 80, 80, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.TUTORIAL_MOVE_RIGHT_LEFT.getValue(), 80, 120, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.GOAL.getValue(), 80, 160, Color.WHITE));
 	}
 	
 	@Override

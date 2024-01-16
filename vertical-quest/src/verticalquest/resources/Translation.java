@@ -8,8 +8,7 @@ import java.nio.charset.StandardCharsets;
 import verticalquest.Game;
 import verticalquest.strings.MessageString;
 import verticalquest.strings.StringError;
-import verticalquest.strings.StringLevel01;
-import verticalquest.strings.StringLevel02;
+import verticalquest.strings.StringLevel;
 import verticalquest.strings.StringScreen;
 
 public class Translation {
@@ -36,16 +35,11 @@ public class Translation {
 				StringError.ERROR_LOADING_AUDIO
 			});
 
-			Translation.toTranslation("level01", new MessageString[] {
-				StringLevel01.LEVEL01,
-				StringLevel01.TUTORIAL_MOVE,
-				StringLevel01.GOAL
+			Translation.toTranslation("level", new MessageString[] {
+				StringLevel.TUTORIAL_MOVE_RIGHT_LEFT,
+				StringLevel.GOAL,
+				StringLevel.TUTORIAL_MOVE_JUMP
 			});
-
-			Translation.toTranslation("level02", new MessageString[] {
-					StringLevel02.LEVEL02,
-					StringLevel02.TUTORIAL_MOVE
-				});
 
 			Translation.toTranslation("screen", new MessageString[] {
 					StringScreen.NEW_GAME,

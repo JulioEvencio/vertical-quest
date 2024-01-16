@@ -1,3 +1,0 @@
-Level 01
-Use as teclas A e D ou as setas direita e esquerda para mover
-Seu objetivo é chegar ao portal azul

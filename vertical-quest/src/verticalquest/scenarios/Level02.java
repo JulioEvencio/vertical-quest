@@ -7,7 +7,7 @@ import verticalquest.entities.Player;
 import verticalquest.entities.Portal;
 import verticalquest.entities.ZoneSpawn;
 import verticalquest.resources.Spritesheet;
-import verticalquest.strings.StringLevel02;
+import verticalquest.strings.StringLevel;
 import verticalquest.tiles.Floor;
 import verticalquest.utils.StringRender;
 
@@ -21,8 +21,8 @@ public class Level02 extends Scenario {
 
 	@Override
 	protected void setStrings() {
-		super.strings.add(new StringRender(StringLevel02.LEVEL02.getValue(), 80, 80, Color.WHITE));
-		super.strings.add(new StringRender(StringLevel02.TUTORIAL_MOVE.getValue(), 80, 120, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.LEVEL_02.getValue(), 80, 80, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.TUTORIAL_MOVE_JUMP.getValue(), 80, 120, Color.WHITE));
 	}
 	
 	@Override
@@ -32,7 +32,7 @@ public class Level02 extends Scenario {
 
 	@Override
 	protected void nextLevel() {
-		System.out.println("Next Level");
+		Game.restart(new Level02(super.player));
 	}
 
 	@Override

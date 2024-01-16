@@ -1,0 +1,3 @@
+Utilice las teclas A y D o las flechas derecha e izquierda para moverse
+Tu objetivo es llegar al portal azul
+Pulsa la tecla W o la flecha hacia arriba para saltar
