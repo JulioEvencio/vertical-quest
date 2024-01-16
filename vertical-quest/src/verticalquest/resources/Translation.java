@@ -38,6 +38,7 @@ public class Translation {
 			Translation.toTranslation("level", new MessageString[] {
 				StringLevel.TUTORIAL_MOVE_RIGHT_LEFT,
 				StringLevel.GOAL,
+				StringLevel.TUTORIAL_PAUSE,
 				StringLevel.TUTORIAL_MOVE_JUMP,
 				StringLevel.TUTORIAL_GENERATE_CLONE,
 				StringLevel.TUTORIAL_ZONE_GREEN,

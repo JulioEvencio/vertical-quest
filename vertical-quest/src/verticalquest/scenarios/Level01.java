@@ -21,6 +21,7 @@ public class Level01 extends Scenario {
 		super.strings.add(new StringRender(StringLevel.LEVEL_01.getValue(), 80, 80, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_MOVE_RIGHT_LEFT.getValue(), 80, 120, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.GOAL.getValue(), 80, 160, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.TUTORIAL_PAUSE.getValue(), 80, 200, Color.WHITE));
 	}
 	
 	@Override
