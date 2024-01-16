@@ -49,6 +49,9 @@ public class Translation {
 					StringScreen.CREDITS,
 					StringScreen.EXIT,
 
+					StringScreen.CONTINUE,
+					StringScreen.MENU,
+
 					StringScreen.PROGRAMMER,
 					StringScreen.PROGRAMMER_LINK,
 

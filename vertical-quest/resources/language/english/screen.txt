@@ -1,6 +1,8 @@
 New Game
 Credits
 Exit
+Continue
+Menu
 Programmer: Júlio Igreja
 Github: https://github.com/JulioEvencio
 Sprites: Mounir Tohami

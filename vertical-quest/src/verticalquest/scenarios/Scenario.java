@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import verticalquest.Game;
+import verticalquest.GameStatus;
 import verticalquest.entities.Player;
 import verticalquest.entities.Portal;
 import verticalquest.entities.ZoneSpawn;
@@ -164,6 +165,10 @@ public abstract class Scenario {
 
 		if (e.getKeyCode() == KeyEvent.VK_R) {
 			Game.restart(this.getCurrentScenario());
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE || e.getKeyCode() == KeyEvent.VK_P) {
+			Game.updateGameStatus(GameStatus.PAUSE);
 		}
 	}
 

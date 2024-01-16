@@ -10,6 +10,9 @@ public class StringScreen {
 	public static final MessageString CREDITS = new MessageString("Credits");
 	public static final MessageString EXIT = new MessageString("Exit");
 
+	public static final MessageString CONTINUE = new MessageString("Continue");
+	public static final MessageString MENU = new MessageString("Menu");
+
 	public static final MessageString PROGRAMMER = new MessageString("Programmer: Júlio Igreja");
 	public static final MessageString PROGRAMMER_LINK = new MessageString("Github: https://github.com/JulioEvencio");
 

@@ -19,6 +19,7 @@ import verticalquest.scenarios.Level01;
 import verticalquest.scenarios.Scenario;
 import verticalquest.screens.Credits;
 import verticalquest.screens.MainMenu;
+import verticalquest.screens.Pause;
 import verticalquest.screens.Screen;
 import verticalquest.screens.SelectLanguage;
 import verticalquest.strings.StringError;
@@ -44,6 +45,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	private static Screen selectLanguage;
 	private static Screen mainMenu;
+	private static Screen pause;
 	private static Screen credits;
 
 	private static Scenario scenario;
@@ -82,6 +84,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		Game.selectLanguage = new SelectLanguage();
 		Game.mainMenu = new MainMenu();
+		Game.pause = new Pause();
 		Game.credits = new Credits();
 
 		Game.scenario = new Level01(Game.player);
@@ -115,6 +118,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			Game.scenario.tick();
 		} else if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.tick();
+		} else if (Game.gameStatus == GameStatus.PAUSE) {
+			Game.pause.tick();
 		} else if (Game.gameStatus == GameStatus.CREDITS) {
 			Game.credits.tick();
 		} else if (Game.gameStatus == GameStatus.SELECT_LANGUAGE) {
@@ -152,6 +157,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.render(graphics);
+		} else if (Game.gameStatus == GameStatus.PAUSE) {
+			Game.pause.render(graphics);
 		} else if (Game.gameStatus == GameStatus.CREDITS) {
 			Game.credits.render(graphics);
 		} else if (Game.gameStatus == GameStatus.SELECT_LANGUAGE) {
@@ -220,6 +227,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public void keyReleased(KeyEvent e) {
 		if (Game.gameStatus == GameStatus.RUN) {
 			Game.scenario.keyReleased(e);
+		} else if (Game.gameStatus == GameStatus.PAUSE) {
+			((Pause) Game.pause).keyReleased(e);
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_F3) {
@@ -255,6 +264,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public void mousePressed(MouseEvent e) {
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.mousePressed(e);
+		} else if (Game.gameStatus == GameStatus.PAUSE) {
+			Game.pause.mousePressed(e);
 		} else if (Game.gameStatus == GameStatus.CREDITS) {
 			Game.credits.mousePressed(e);
 		} else if (Game.gameStatus == GameStatus.SELECT_LANGUAGE) {
@@ -266,6 +277,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public void mouseReleased(MouseEvent e) {
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.mouseReleased(e);
+		} else if (Game.gameStatus == GameStatus.PAUSE) {
+			Game.pause.mouseReleased(e);
 		} else if (Game.gameStatus == GameStatus.CREDITS) {
 			Game.credits.mouseReleased(e);
 		} else if (Game.gameStatus == GameStatus.SELECT_LANGUAGE) {
