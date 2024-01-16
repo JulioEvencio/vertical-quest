@@ -1,3 +1,6 @@
 Use the A and D keys or the right and left arrows to move
 Your goal is to reach the blue portal
 Press the W key or the up arrow to jump
+Press the spacebar to generate a clone of yourself
+You cannot spawn clones in the green zone
+Press R to restart the level

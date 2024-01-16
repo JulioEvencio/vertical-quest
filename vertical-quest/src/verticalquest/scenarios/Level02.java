@@ -32,7 +32,7 @@ public class Level02 extends Scenario {
 
 	@Override
 	protected void nextLevel() {
-		Game.restart(new Level02(super.player));
+		Game.restart(new Level03(super.player));
 	}
 
 	@Override

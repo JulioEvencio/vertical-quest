@@ -1,3 +1,6 @@
 Use as teclas A e D ou as setas direita e esquerda para mover
 Seu objetivo é chegar ao portal azul
 Pressione a tecla W ou a seta para cima para pular
+Pressione a barra de espaço para gerar um clone seu
+Você não pode gerar clones na zona verde
+Pressione R para recomeçar o level
