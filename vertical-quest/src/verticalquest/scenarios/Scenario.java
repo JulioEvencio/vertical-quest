@@ -71,6 +71,10 @@ public abstract class Scenario {
 
 		this.setStrings();
 		this.playerSetPosition();
+
+		this.player.stopUp();
+		this.player.stopRight();
+		this.player.stopLeft();
 	}
 
 	protected abstract void setStrings();

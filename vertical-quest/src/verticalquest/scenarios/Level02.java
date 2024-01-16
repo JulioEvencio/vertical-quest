@@ -7,20 +7,22 @@ import verticalquest.entities.Player;
 import verticalquest.entities.Portal;
 import verticalquest.entities.ZoneSpawn;
 import verticalquest.resources.Spritesheet;
-import verticalquest.strings.StringLevel01;
+import verticalquest.strings.StringLevel02;
+import verticalquest.tiles.Floor;
 import verticalquest.utils.StringRender;
 
-public class Level01 extends Scenario {
+public class Level02 extends Scenario {
 
-	public Level01(Player player) {
+	public Level02(Player player) {
 		super(Game.WIDTH, Game.HEIGHT, Spritesheet.getSpriteGUI(97, 37, 24, 22), new ZoneSpawn(100, Game.HEIGHT - 150), new Portal(Game.WIDTH - 150, Game.HEIGHT - 120), player);
+
+		this.tiles.add(new Floor(350, super.height - 100));
 	}
 
 	@Override
 	protected void setStrings() {
-		super.strings.add(new StringRender(StringLevel01.LEVEL01.getValue(), 80, 80, Color.WHITE));
-		super.strings.add(new StringRender(StringLevel01.TUTORIAL_MOVE.getValue(), 80, 120, Color.WHITE));
-		super.strings.add(new StringRender(StringLevel01.GOAL.getValue(), 80, 160, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel02.LEVEL02.getValue(), 80, 80, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel02.TUTORIAL_MOVE.getValue(), 80, 120, Color.WHITE));
 	}
 	
 	@Override
@@ -30,12 +32,12 @@ public class Level01 extends Scenario {
 
 	@Override
 	protected void nextLevel() {
-		Game.restart(new Level02(super.player));
+		System.out.println("Next Level");
 	}
 
 	@Override
 	protected Scenario getCurrentScenario() {
-		return new Level01(super.player);
+		return new Level02(super.player);
 	}
 
 }
