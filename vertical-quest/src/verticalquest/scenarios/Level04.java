@@ -26,10 +26,7 @@ public class Level04 extends Scenario {
 
 	@Override
 	protected void setStrings() {
-		super.strings.add(new StringRender(StringLevel.LEVEL_03.getValue(), 80, 80, Color.WHITE));
-		super.strings.add(new StringRender(StringLevel.TUTORIAL_GENERATE_CLONE.getValue(), 80, 120, Color.WHITE));
-		super.strings.add(new StringRender(StringLevel.TUTORIAL_ZONE_GREEN.getValue(), 80, 160, Color.WHITE));
-		super.strings.add(new StringRender(StringLevel.TUTORIAL_RESTART.getValue(), 80, 200, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.LEVEL_04.getValue(), 80, 80, Color.WHITE));
 	}
 	
 	@Override
