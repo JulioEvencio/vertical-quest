@@ -16,6 +16,7 @@ import verticalquest.tiles.Floor;
 import verticalquest.tiles.PlayerClone;
 import verticalquest.tiles.Tile;
 import verticalquest.tiles.Wall;
+import verticalquest.utils.Camera;
 import verticalquest.utils.Rect;
 import verticalquest.utils.StringRender;
 
@@ -92,6 +93,12 @@ public abstract class Scenario {
 		return true;
 	}
 
+	private boolean canRender(Rect object) {
+		Rect area = new Rect(Camera.x, 0, Game.WIDTH, Game.HEIGHT);
+
+		return area.isColliding(object);
+	}
+
 	public void tick() {
 		this.player.tick();
 		this.portal.tick();
@@ -115,14 +122,29 @@ public abstract class Scenario {
 		render.setColor(Color.BLACK);
 		render.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 
-		this.strings.forEach(string -> string.render(render));
+		this.strings.forEach(string -> {
+			if (this.canRender(new Rect(string.getX(), string.getY(), string.getWidth(), string.getHeight()))) {
+				string.render(render);
+			}
+		});
 
-		this.tiles.forEach(tile -> tile.render(render));
+		this.tiles.forEach(tile -> {
+			if (this.canRender(tile.getRect())) {
+				tile.render(render);
+			}
+		});
 
-		this.spawn.render(render);
-		this.portal.render(render);
+		if (this.canRender(this.spawn.getRect())) {
+			this.spawn.render(render);
+		}
 
-		this.player.render(render);
+		if (this.canRender(this.portal.getRect())) {
+			this.portal.render(render);
+		}
+
+		if (this.canRender(this.player.getRect())) {
+			this.player.render(render);
+		}
 	}
 
 	public void keyPressed(KeyEvent e) {

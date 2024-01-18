@@ -33,6 +33,10 @@ public class Portal {
 		this.colorFrames = this.colorFramesMax;
 	}
 
+	public Rect getRect() {
+		return this.rect;
+	}
+
 	public boolean nextLevel(Player player) {
 		return this.rect.isColliding(player.getRect());
 	}
