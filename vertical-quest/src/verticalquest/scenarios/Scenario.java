@@ -94,6 +94,7 @@ public abstract class Scenario {
 
 	public void tick() {
 		this.player.tick();
+		this.portal.tick();
 
 		if (this.portal.nextLevel(this.player)) {
 			this.nextLevel();

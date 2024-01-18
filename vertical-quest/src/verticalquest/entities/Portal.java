@@ -37,9 +37,7 @@ public class Portal {
 		return this.rect.isColliding(player.getRect());
 	}
 
-	public void render(Graphics render) {
-		this.color = new Color(67, 131, 225, this.colorFrames);
-
+	public void tick() {
 		if (this.colorFramesInvertUpdate) {
 			this.colorFrames -= 3;
 		} else {
@@ -55,6 +53,10 @@ public class Portal {
 			this.colorFrames = this.colorFramesMin;
 			this.colorFramesInvertUpdate = false;
 		}
+	}
+
+	public void render(Graphics render) {
+		this.color = new Color(67, 131, 225, this.colorFrames);
 
 		render.setColor(this.color);
 		render.fillRect(this.rect.x - Camera.x, this.rect.y, this.rect.width, this.rect.height);
