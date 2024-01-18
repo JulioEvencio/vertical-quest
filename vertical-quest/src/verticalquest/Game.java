@@ -56,9 +56,11 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private static Audio audioNow;
 
 	private static final Audio audioMenu;
+	private static final Audio audioGame;
 
 	static {
 		audioMenu = new Audio("/audios/menu.wav");
+		audioGame = new Audio("/audios/game.wav");
 	}
 
 	public Game() {
@@ -99,14 +101,22 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	public static void updateGameStatus(GameStatus gameStatus) {
 		Game.gameStatus = gameStatus;
+
+		if (Game.gameStatus == GameStatus.RUN || Game.gameStatus == GameStatus.PAUSE) {
+			Game.updateAudio(Game.audioGame);
+		} else {
+			Game.updateAudio(Game.audioMenu);
+		}
 	}
 
 	public static void updateAudio(Audio audio) {
-		if (Game.audioNow != null) {
-			Game.audioNow.stop();
-		}
+		if (Game.audioNow != audio) {
+			if (Game.audioNow != null) {
+				Game.audioNow.stop();
+			}
 
-		Game.audioNow = audio;
+			Game.audioNow = audio;
+		}
 	}
 
 	private void tick() {
