@@ -1,8 +1,8 @@
 package verticalquest.scenarios;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +21,8 @@ import verticalquest.utils.StringRender;
 
 public abstract class Scenario {
 
-	protected final int width;
-	protected final int height;
-
-	private final BufferedImage background;
+	public final int width;
+	public final int height;
 
 	protected final ZoneSpawn spawn;
 	protected final Portal portal;
@@ -39,11 +37,9 @@ public abstract class Scenario {
 	private boolean keySpace;
 	private boolean pressedSpace;
 
-	public Scenario(int width, int height, BufferedImage background, ZoneSpawn spawn, Portal portal, Player player) {
+	public Scenario(int width, int height, ZoneSpawn spawn, Portal portal, Player player) {
 		this.width = width;
 		this.height = height;
-
-		this.background = background;
 
 		this.spawn = spawn;
 		this.portal = portal;
@@ -115,7 +111,8 @@ public abstract class Scenario {
 	}
 
 	public void render(Graphics render) {
-		render.drawImage(this.background, 0, 0, this.width, this.height, null);
+		render.setColor(Color.BLACK);
+		render.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 
 		this.strings.forEach(string -> string.render(render));
 

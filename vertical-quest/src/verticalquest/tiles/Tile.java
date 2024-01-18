@@ -3,6 +3,7 @@ package verticalquest.tiles;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import verticalquest.utils.Camera;
 import verticalquest.utils.Rect;
 
 public abstract class Tile {
@@ -22,7 +23,7 @@ public abstract class Tile {
 
 	public void render(Graphics render) {
 		render.setColor(this.color);
-		render.fillRect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
+		render.fillRect(this.rect.x - Camera.x, this.rect.y, this.rect.width, this.rect.height);
 	}
 
 }

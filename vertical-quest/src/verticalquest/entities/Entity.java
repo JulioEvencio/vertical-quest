@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import verticalquest.scenarios.Scenario;
+import verticalquest.utils.Camera;
 import verticalquest.utils.Rect;
 
 public abstract class Entity {
@@ -59,7 +60,7 @@ public abstract class Entity {
 
 	public void render(Graphics render) {
 		render.setColor(this.color);
-		render.fillRect((int) this.x, (int) this.y, this.width, this.height);
+		render.fillRect((int) (this.x - Camera.x), (int) this.y, this.width, this.height);
 	}
 
 }

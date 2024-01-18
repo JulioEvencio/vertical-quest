@@ -10,10 +10,10 @@ import verticalquest.strings.StringLevel;
 import verticalquest.tiles.Floor;
 import verticalquest.utils.StringRender;
 
-public class Level03 extends Scenario {
+public class Level04 extends Scenario {
 
-	public Level03(Player player) {
-		super(Game.WIDTH, Game.HEIGHT, new ZoneSpawn(100, Game.HEIGHT - 150), new Portal(Game.WIDTH - 150, Game.HEIGHT - 220), player);
+	public Level04(Player player) {
+		super(Game.WIDTH * 2, Game.HEIGHT, new ZoneSpawn(100, Game.HEIGHT - 150), new Portal(Game.WIDTH - 150, Game.HEIGHT - 220), player);
 
 		this.tiles.add(new Floor(super.width - 100, super.height - 100));
 		this.tiles.add(new Floor(super.width - 150, super.height - 100));
@@ -44,7 +44,7 @@ public class Level03 extends Scenario {
 
 	@Override
 	protected Scenario getCurrentScenario() {
-		return new Level03(super.player);
+		return new Level04(super.player);
 	}
 
 }

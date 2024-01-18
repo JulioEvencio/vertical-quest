@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import verticalquest.utils.Camera;
 import verticalquest.utils.Rect;
 
 public class Portal {
@@ -56,13 +57,13 @@ public class Portal {
 		}
 
 		render.setColor(this.color);
-		render.fillRect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
+		render.fillRect(this.rect.x - Camera.x, this.rect.y, this.rect.width, this.rect.height);
 
 		Graphics2D g = (Graphics2D) render;
 		g.setStroke(new BasicStroke(2.0f));
 
 		render.setColor(Color.BLACK);
-		render.drawRect(this.rect.x, this.rect.y, this.rect.width, this.rect.height);
+		render.drawRect(this.rect.x - Camera.x, this.rect.y, this.rect.width, this.rect.height);
 
 		g.setStroke(new BasicStroke(1.0f));
 	}

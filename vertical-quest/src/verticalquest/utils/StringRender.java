@@ -27,7 +27,7 @@ public class StringRender {
 		render.setColor(this.color);
 		render.setFont(GameUtil.getFontDefault());
 
-		render.drawString(this.text, this.x, this.y);
+		render.drawString(this.text, this.x - Camera.x, this.y);
 	}
 
 }

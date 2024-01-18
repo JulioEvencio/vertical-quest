@@ -2,6 +2,8 @@ package verticalquest.entities;
 
 import java.awt.Color;
 
+import verticalquest.Game;
+import verticalquest.utils.Camera;
 import verticalquest.utils.Rect;
 
 public class Player extends Entity {
@@ -124,6 +126,8 @@ public class Player extends Entity {
 
 		this.toRight();
 		this.toLeft();
+
+		Camera.x = Camera.clamp((int) (x - (Game.WIDTH / 2)), 0, this.scenario.width * 50 - Game.WIDTH);
 	}
 
 }
