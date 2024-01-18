@@ -23,8 +23,10 @@ public class Level02 extends Scenario {
 	protected void setStrings() {
 		super.strings.add(new StringRender(StringLevel.LEVEL_02.getValue(), 80, 80, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_MOVE_JUMP.getValue(), 80, 120, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.TUTORIAL_FPS.getValue(), 80, 160, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.TUTORIAL_MUSIC.getValue(), 80, 200, Color.WHITE));
 	}
-	
+
 	@Override
 	protected void playerSetPosition() {
 		super.player.setPosition(150, super.height - 100);

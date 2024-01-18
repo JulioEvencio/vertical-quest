@@ -11,6 +11,8 @@ public class StringLevel {
 	public static final MessageString TUTORIAL_PAUSE = new MessageString("Press P or ESC to pause the game");
 
 	public static final MessageString TUTORIAL_MOVE_JUMP = new MessageString("Use the A and D keys or the right and left arrows to move");
+	public static final MessageString TUTORIAL_FPS = new MessageString("Press F3 to show/hide FPS");
+	public static final MessageString TUTORIAL_MUSIC = new MessageString("Press F4 to enable/disable music");
 
 	public static final MessageString TUTORIAL_GENERATE_CLONE = new MessageString("Press the spacebar to generate a clone of yourself");
 	public static final MessageString TUTORIAL_ZONE_GREEN = new MessageString("You cannot spawn clones in the green zone");

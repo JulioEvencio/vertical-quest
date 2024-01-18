@@ -40,6 +40,8 @@ public class Translation {
 				StringLevel.GOAL,
 				StringLevel.TUTORIAL_PAUSE,
 				StringLevel.TUTORIAL_MOVE_JUMP,
+				StringLevel.TUTORIAL_FPS,
+				StringLevel.TUTORIAL_MUSIC,
 				StringLevel.TUTORIAL_GENERATE_CLONE,
 				StringLevel.TUTORIAL_ZONE_GREEN,
 				StringLevel.TUTORIAL_RESTART
