@@ -21,6 +21,12 @@ public class StringScreen {
 	public static final MessageString SPRITES_CREDITS = new MessageString("Sprites: Mounir Tohami");
 	public static final MessageString SPRITES_CREDITS_LINK = new MessageString("itch.io: https://mounirtohami.itch.io/");
 
+	public static final MessageString AUDIO_MENU_CREDITS = new MessageString("Audio: josefpres");
+	public static final MessageString AUDIO_MENU_CREDITS_LINK = new MessageString("freesound.org: https://freesound.org/people/josefpres/");
+	
+	public static final MessageString AUDIO_GAME_CREDITS = new MessageString("Audio: gis_sweden");
+	public static final MessageString AUDIO_GAME_CREDITS_LINK = new MessageString("freesound.org: https://freesound.org/people/gis_sweden/");
+
 	public static final MessageString BACK = new MessageString("Back");
 
 }

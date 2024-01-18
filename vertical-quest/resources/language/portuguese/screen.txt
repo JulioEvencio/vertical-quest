@@ -7,4 +7,8 @@ Programador: Júlio Igreja
 Github: https://github.com/JulioEvencio
 Sprites: Mounir Tohami
 itch.io: https://mounirtohami.itch.io/
+Áudio: josefpres
+freesound.org: https://freesound.org/people/josefpres/
+Áudio: gis_sweden
+freesound.org: https://freesound.org/people/gis_sweden/
 Voltar
