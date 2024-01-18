@@ -43,6 +43,8 @@ public abstract class Screen {
 
 		this.clickX = 0;
 		this.clickY = 0;
+
+		this.texts.add(new Text(String.format("Version: %s", Game.VERSION), 50, 50, Color.WHITE));
 	}
 
 	protected List<Text> getTexts() {
