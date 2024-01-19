@@ -7,3 +7,4 @@ Pressione F4 para ativar/desativar música
 Pressione a barra de espaço para gerar um clone seu
 Você não pode gerar clones na zona verde
 Pressione R para recomeçar o level
+Colidir no bloco vermelho irá matar você

@@ -7,3 +7,4 @@ Press F4 to enable/disable music
 Press the spacebar to generate a clone of yourself
 You cannot spawn clones in the green zone
 Press R to restart the level
+Colliding into the red block will kill you

@@ -19,4 +19,6 @@ public class StringLevel {
 	public static final MessageString TUTORIAL_ZONE_GREEN = new MessageString("You cannot spawn clones in the green zone");
 	public static final MessageString TUTORIAL_RESTART = new MessageString("Press R to restart the level");
 
+	public static final MessageString TUTORIAL_BLOCK_RED = new MessageString("Colliding into the red block will kill you");
+
 }

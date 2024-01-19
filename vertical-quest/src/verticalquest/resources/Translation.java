@@ -44,7 +44,8 @@ public class Translation {
 				StringLevel.TUTORIAL_MUSIC,
 				StringLevel.TUTORIAL_GENERATE_CLONE,
 				StringLevel.TUTORIAL_ZONE_GREEN,
-				StringLevel.TUTORIAL_RESTART
+				StringLevel.TUTORIAL_RESTART,
+				StringLevel.TUTORIAL_BLOCK_RED
 			});
 
 			Translation.toTranslation("screen", new MessageString[] {

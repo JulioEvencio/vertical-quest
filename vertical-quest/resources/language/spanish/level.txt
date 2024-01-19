@@ -1,9 +1,10 @@
 Utilice las teclas A y D o las flechas derecha e izquierda para moverse
 Tu objetivo es llegar al portal azul
-Pulsa P o ESC para pausar el juego.
+Pulsa P o ESC para pausar el juego
 Pulsa la tecla W o la flecha hacia arriba para saltar
 Pulsa F3 para mostrar/ocultar FPS
 Pulsa F4 para habilitar/deshabilitar la música
 Pulsa la barra espaciadora para generar un clon de ti mismo
 No puedes generar clones en la zona verde
-Pulsa R para reiniciar el nivel.
+Pulsa R para reiniciar el nivel
+Chocar contra el bloque rojo te matará

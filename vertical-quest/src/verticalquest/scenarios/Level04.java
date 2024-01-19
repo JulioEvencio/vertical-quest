@@ -30,6 +30,7 @@ public class Level04 extends Scenario {
 	@Override
 	protected void setStrings() {
 		super.strings.add(new StringRender(StringLevel.LEVEL_04.getValue(), 80, 80, Color.WHITE));
+		super.strings.add(new StringRender(StringLevel.TUTORIAL_BLOCK_RED.getValue(), 80, 120, Color.WHITE));
 	}
 
 	@Override
