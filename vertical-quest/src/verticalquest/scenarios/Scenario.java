@@ -103,7 +103,7 @@ public abstract class Scenario {
 		this.player.tick();
 		this.portal.tick();
 
-		if (this.portal.nextLevel(this.player)) {
+		if (this.portal.getRect().isColliding(this.player.getRect())) {
 			this.nextLevel();
 		}
 
