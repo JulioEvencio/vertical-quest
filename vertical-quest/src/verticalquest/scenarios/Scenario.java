@@ -118,6 +118,8 @@ public abstract class Scenario {
 			if (blockRed.getRect().isColliding(this.player.getRect())) {
 				this.restart();
 			}
+
+			blockRed.tick();
 		});
 
 		if (this.pressedSpace) {
