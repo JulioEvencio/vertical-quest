@@ -3,6 +3,7 @@ package verticalquest.scenarios;
 import java.awt.Color;
 
 import verticalquest.Game;
+import verticalquest.entities.BlockRed;
 import verticalquest.entities.Player;
 import verticalquest.entities.Portal;
 import verticalquest.entities.ZoneSpawn;
@@ -18,17 +19,19 @@ public class Level04 extends Scenario {
 		this.tiles.add(new Floor(super.width - 100, super.height - 100));
 		this.tiles.add(new Floor(super.width - 150, super.height - 100));
 		this.tiles.add(new Floor(super.width - 200, super.height - 100));
-		
+
 		this.tiles.add(new Floor(super.width - 100, super.height - 150));
 		this.tiles.add(new Floor(super.width - 150, super.height - 150));
 		this.tiles.add(new Floor(super.width - 200, super.height - 150));
+
+		super.blockReds.add(new BlockRed(400, super.height - 100));
 	}
 
 	@Override
 	protected void setStrings() {
 		super.strings.add(new StringRender(StringLevel.LEVEL_04.getValue(), 80, 80, Color.WHITE));
 	}
-	
+
 	@Override
 	protected void playerSetPosition() {
 		super.player.setPosition(150, super.height - 100);

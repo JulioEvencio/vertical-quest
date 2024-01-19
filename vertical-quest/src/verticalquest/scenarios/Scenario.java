@@ -8,6 +8,7 @@ import java.util.List;
 
 import verticalquest.Game;
 import verticalquest.GameStatus;
+import verticalquest.entities.BlockRed;
 import verticalquest.entities.Player;
 import verticalquest.entities.Portal;
 import verticalquest.entities.ZoneSpawn;
@@ -29,6 +30,7 @@ public abstract class Scenario {
 	protected final Portal portal;
 
 	protected final List<Tile> tiles;
+	protected final List<BlockRed> blockReds;
 	protected final List<StringRender> strings;
 
 	protected final Player player;
@@ -46,6 +48,7 @@ public abstract class Scenario {
 		this.portal = portal;
 
 		this.tiles = new ArrayList<>();
+		this.blockReds = new ArrayList<>();
 		this.strings = new ArrayList<>();
 
 		this.player = player;
@@ -83,6 +86,10 @@ public abstract class Scenario {
 
 	protected abstract Scenario getCurrentScenario();
 
+	private void restart() {
+		Game.restart(this.getCurrentScenario());
+	}
+
 	public boolean isFree(Rect rect) {
 		for (Tile tile : this.tiles) {
 			if (tile.getRect().isColliding(rect)) {
@@ -106,6 +113,12 @@ public abstract class Scenario {
 		if (this.portal.getRect().isColliding(this.player.getRect())) {
 			this.nextLevel();
 		}
+
+		this.blockReds.forEach(blockRed -> {
+			if (blockRed.getRect().isColliding(this.player.getRect())) {
+				this.restart();
+			}
+		});
 
 		if (this.pressedSpace) {
 			if (!this.spawn.getRect().isColliding(this.player.getRect())) {
@@ -131,6 +144,12 @@ public abstract class Scenario {
 		this.tiles.forEach(tile -> {
 			if (this.canRender(tile.getRect())) {
 				tile.render(render);
+			}
+		});
+
+		this.blockReds.forEach(blockRed -> {
+			if (this.canRender(blockRed.getRect())) {
+				blockRed.render(render);
 			}
 		});
 
@@ -184,7 +203,7 @@ public abstract class Scenario {
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_R) {
-			Game.restart(this.getCurrentScenario());
+			this.restart();
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE || e.getKeyCode() == KeyEvent.VK_P) {
