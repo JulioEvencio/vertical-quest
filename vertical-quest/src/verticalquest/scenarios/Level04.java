@@ -16,13 +16,13 @@ public class Level04 extends Scenario {
 	public Level04(Player player) {
 		super(Game.WIDTH * 2, Game.HEIGHT, new ZoneSpawn(100, Game.HEIGHT - 150), new Portal(Game.WIDTH - 150, Game.HEIGHT - 220), player);
 
-		this.tiles.add(new Floor(super.width - 100, super.height - 100));
-		this.tiles.add(new Floor(super.width - 150, super.height - 100));
-		this.tiles.add(new Floor(super.width - 200, super.height - 100));
+		super.tiles.add(new Floor(super.width - 100, super.height - 100));
+		super.tiles.add(new Floor(super.width - 150, super.height - 100));
+		super.tiles.add(new Floor(super.width - 200, super.height - 100));
 
-		this.tiles.add(new Floor(super.width - 100, super.height - 150));
-		this.tiles.add(new Floor(super.width - 150, super.height - 150));
-		this.tiles.add(new Floor(super.width - 200, super.height - 150));
+		super.tiles.add(new Floor(super.width - 100, super.height - 150));
+		super.tiles.add(new Floor(super.width - 150, super.height - 150));
+		super.tiles.add(new Floor(super.width - 200, super.height - 150));
 
 		super.blockReds.add(new BlockRed(400, super.height - 100));
 	}

@@ -15,7 +15,7 @@ public class Level02 extends Scenario {
 	public Level02(Player player) {
 		super(Game.WIDTH, Game.HEIGHT, new ZoneSpawn(100, Game.HEIGHT - 150), new Portal(Game.WIDTH - 150, Game.HEIGHT - 120), player);
 
-		this.tiles.add(new Floor(350, super.height - 100));
+		super.tiles.add(new Floor(350, super.height - 100));
 	}
 
 	@Override

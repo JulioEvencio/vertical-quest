@@ -101,9 +101,9 @@ public abstract class Scenario {
 	}
 
 	private boolean canRender(Rect object) {
-		Rect area = new Rect(Camera.x, 0, Game.WIDTH, Game.HEIGHT);
+		Rect areaCamera = new Rect(Camera.x, 0, Game.WIDTH, Game.HEIGHT);
 
-		return area.isColliding(object);
+		return areaCamera.isColliding(object);
 	}
 
 	public void tick() {
