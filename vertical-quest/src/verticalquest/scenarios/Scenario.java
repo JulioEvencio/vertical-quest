@@ -143,12 +143,6 @@ public abstract class Scenario {
 			}
 		});
 
-		this.tiles.forEach(tile -> {
-			if (this.canRender(tile.getRect())) {
-				tile.render(render);
-			}
-		});
-
 		this.blockReds.forEach(blockRed -> {
 			if (this.canRender(blockRed.getRect())) {
 				blockRed.render(render);
@@ -166,6 +160,12 @@ public abstract class Scenario {
 		if (this.canRender(this.player.getRect())) {
 			this.player.render(render);
 		}
+
+		this.tiles.forEach(tile -> {
+			if (this.canRender(tile.getRect())) {
+				tile.render(render);
+			}
+		});
 	}
 
 	public void keyPressed(KeyEvent e) {
