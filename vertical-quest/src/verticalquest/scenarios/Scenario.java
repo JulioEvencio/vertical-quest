@@ -143,12 +143,6 @@ public abstract class Scenario {
 			}
 		});
 
-		this.blockReds.forEach(blockRed -> {
-			if (this.canRender(blockRed.getRect())) {
-				blockRed.render(render);
-			}
-		});
-
 		if (this.canRender(this.spawn.getRect())) {
 			this.spawn.render(render);
 		}
@@ -160,6 +154,12 @@ public abstract class Scenario {
 		if (this.canRender(this.player.getRect())) {
 			this.player.render(render);
 		}
+
+		this.blockReds.forEach(blockRed -> {
+			if (this.canRender(blockRed.getRect())) {
+				blockRed.render(render);
+			}
+		});
 
 		this.tiles.forEach(tile -> {
 			if (this.canRender(tile.getRect())) {
