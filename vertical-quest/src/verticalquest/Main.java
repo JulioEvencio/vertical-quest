@@ -1,5 +1,8 @@
 package verticalquest;
 
+import java.awt.Image;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -19,6 +22,13 @@ public class Main {
 			frame.pack();
 			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
+
+			try {
+				Image imageIcon = ImageIO.read(Main.class.getResource("/icon.png"));
+				frame.setIconImage(imageIcon);
+			} catch (Exception e) {
+				Game.exitWithError("Error loading files");
+			}
 
 			new Thread(game).start();
 		});
