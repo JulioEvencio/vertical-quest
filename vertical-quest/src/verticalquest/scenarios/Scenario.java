@@ -77,16 +77,16 @@ public abstract class Scenario {
 			for (int j = 0; j < this.map[0].length; j++) {
 				switch (map[i][j]) {
 					case 'F':
-						this.tiles.add(new Floor(50 * i, 50 * i));
+						this.tiles.add(new Floor(50 * i, 50 * j));
 						break;
 					case 'C':
-						this.tiles.add(new Ceiling(50 * i, 50 * i));
+						this.tiles.add(new Ceiling(50 * i, 50 * j));
 						break;
 					case 'W':
-						this.tiles.add(new Wall(50 * i, 50 * i));
+						this.tiles.add(new Wall(50 * i, 50 * j));
 						break;
 					case 'R':
-						this.blockReds.add(new BlockRed(50 * i, 50 * i));
+						this.blockReds.add(new BlockRed(50 * i, 50 * j));
 						break;
 					case 'P':
 						this.portal = new Portal(50 * i, 50 * j);
