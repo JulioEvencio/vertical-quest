@@ -31,8 +31,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public static final String VERSION = "0.1";
 
 	public static final int SCALE = 1;
-	public static final int WIDTH = 720;
-	public static final int HEIGHT = 480;
+	public static final int WIDTH = 750;
+	public static final int HEIGHT = 500;
 
 	private int fps;
 	private boolean showFPS;
