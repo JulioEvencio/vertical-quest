@@ -4,18 +4,29 @@ import java.awt.Color;
 
 import verticalquest.Game;
 import verticalquest.entities.Player;
-import verticalquest.entities.Portal;
-import verticalquest.entities.ZoneSpawn;
 import verticalquest.strings.StringLevel;
-import verticalquest.tiles.Floor;
 import verticalquest.utils.StringRender;
 
 public class Level02 extends Scenario {
 
 	public Level02(Player player) {
-		super(Game.WIDTH, Game.HEIGHT, new ZoneSpawn(100, Game.HEIGHT - 150), new Portal(Game.WIDTH - 150, Game.HEIGHT - 120), player);
+		super(player);
+	}
 
-		super.tiles.add(new Floor(350, super.height - 100));
+	@Override
+	protected void initializeLevel() {
+		super.map = new char[][] {
+			{'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', 'S', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', 'J', ' ', ' ', ' ', ' ', 'F', ' ', ' ', ' ', 'P', ' ', 'W'},
+			{'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'}
+		};
 	}
 
 	@Override
@@ -24,11 +35,6 @@ public class Level02 extends Scenario {
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_MOVE_JUMP.getValue(), 80, 120, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_FPS.getValue(), 80, 160, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_MUSIC.getValue(), 80, 200, Color.WHITE));
-	}
-
-	@Override
-	protected void playerSetPosition() {
-		super.player.setPosition(150, super.height - 100);
 	}
 
 	@Override
