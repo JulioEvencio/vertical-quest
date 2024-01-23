@@ -26,8 +26,10 @@ public abstract class Scenario {
 	public final int width;
 	public final int height;
 
-	protected final ZoneSpawn spawn;
-	protected final Portal portal;
+	protected char[][] map;
+
+	protected ZoneSpawn spawn;
+	protected Portal portal;
 
 	protected final List<Tile> tiles;
 	protected final List<BlockRed> blockReds;
@@ -40,19 +42,15 @@ public abstract class Scenario {
 	private boolean keySpace;
 	private boolean pressedSpace;
 
-	public Scenario(int width, int height, ZoneSpawn spawn, Portal portal, Player player) {
+	public Scenario(int width, int height, Player player) {
 		this.width = width;
 		this.height = height;
-
-		this.spawn = spawn;
-		this.portal = portal;
 
 		this.tiles = new ArrayList<>();
 		this.blockReds = new ArrayList<>();
 		this.strings = new ArrayList<>();
 
 		this.player = player;
-
 		this.player.setScenario(this);
 
 		this.gravity = 0.5;
@@ -60,22 +58,48 @@ public abstract class Scenario {
 		this.keySpace = false;
 		this.pressedSpace = false;
 
-		for (int i = 0; i < (this.height / 50) + 1; i++) {
-			this.tiles.add(new Wall(0, 50 * i));
-			this.tiles.add(new Wall(this.width - 50, 50 * i));
-		}
-
-		for (int i = 0; i < (this.width / 50) + 1; i++) {
-			this.tiles.add(new Ceiling(50 * i, 0));
-			this.tiles.add(new Floor(50 * i, this.height - 50));
-		}
-
 		this.setStrings();
 		this.playerSetPosition();
 
 		this.player.stopUp();
 		this.player.stopRight();
 		this.player.stopLeft();
+
+		this.buildGame();
+	}
+
+	protected abstract void initializeLevel();
+
+	private void buildGame() {
+		this.initializeLevel();
+
+		for (int i = 0; i < this.map.length; i++) {
+			for (int j = 0; j < this.map[0].length; j++) {
+				switch (map[i][j]) {
+					case 'F':
+						this.tiles.add(new Floor(50 * i, 50 * i));
+						break;
+					case 'C':
+						this.tiles.add(new Ceiling(50 * i, 50 * i));
+						break;
+					case 'W':
+						this.tiles.add(new Wall(50 * i, 50 * i));
+						break;
+					case 'R':
+						this.blockReds.add(new BlockRed(50 * i, 50 * i));
+						break;
+					case 'P':
+						this.portal = new Portal(50 * i, 50 * j);
+						break;
+					case 'S':
+						this.spawn = new ZoneSpawn(50 * i, 50 * j);
+						break;
+					case 'J':
+						this.player.setPosition(50 * i, 50 * j);
+						break;
+				}
+			}
+		}
 	}
 
 	protected abstract void setStrings();
