@@ -4,24 +4,29 @@ import java.awt.Color;
 
 import verticalquest.Game;
 import verticalquest.entities.Player;
-import verticalquest.entities.Portal;
-import verticalquest.entities.ZoneSpawn;
 import verticalquest.strings.StringLevel;
-import verticalquest.tiles.Floor;
 import verticalquest.utils.StringRender;
 
 public class Level03 extends Scenario {
 
 	public Level03(Player player) {
-		super(Game.WIDTH, Game.HEIGHT, new ZoneSpawn(100, Game.HEIGHT - 150), new Portal(Game.WIDTH - 150, Game.HEIGHT - 220), player);
+		super(player);
+	}
 
-		super.tiles.add(new Floor(super.width - 100, super.height - 100));
-		super.tiles.add(new Floor(super.width - 150, super.height - 100));
-		super.tiles.add(new Floor(super.width - 200, super.height - 100));
-		
-		super.tiles.add(new Floor(super.width - 100, super.height - 150));
-		super.tiles.add(new Floor(super.width - 150, super.height - 150));
-		super.tiles.add(new Floor(super.width - 200, super.height - 150));
+	@Override
+	protected void initializeLevel() {
+		super.map = new char[][] {
+			{'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'P', ' ', 'W'},
+			{'W', ' ', 'S', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'F', 'F', 'F', 'W'},
+			{'W', ' ', ' ', 'J', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'F', 'F', 'F', 'W'},
+			{'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'}
+		};
 	}
 
 	@Override
@@ -30,11 +35,6 @@ public class Level03 extends Scenario {
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_GENERATE_CLONE.getValue(), 80, 120, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_ZONE_GREEN.getValue(), 80, 160, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_RESTART.getValue(), 80, 200, Color.WHITE));
-	}
-	
-	@Override
-	protected void playerSetPosition() {
-		super.player.setPosition(150, super.height - 100);
 	}
 
 	@Override
