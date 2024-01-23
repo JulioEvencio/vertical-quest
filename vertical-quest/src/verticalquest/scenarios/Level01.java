@@ -10,19 +10,22 @@ import verticalquest.utils.StringRender;
 public class Level01 extends Scenario {
 
 	public Level01(Player player) {
-		super(Game.WIDTH, Game.HEIGHT, player);
+		super(player);
 	}
 
+	@Override
 	protected void initializeLevel() {
 		super.map = new char[][] {
-			{'C', 'C', 'C', 'C', 'C', 'C', 'C'},
-			{'W', ' ', ' ', ' ', ' ', ' ', 'W'},
-			{'W', ' ', ' ', ' ', ' ', ' ', 'W'},
-			{'W', 'S', ' ', ' ', 'P', ' ', 'W'},
-			{'W', ' ', ' ', ' ', ' ', ' ', 'W'},
-			{'W', 'J', ' ', ' ', ' ', ' ', 'W'},
-			{'W', ' ', ' ', ' ', ' ', ' ', 'W'},
-			{'F', 'F', 'F', 'F', 'F', 'F', 'F'}
+			{'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', 'S', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', 'J', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'P', ' ', 'W'},
+			{'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'}
 		};
 	}
 
@@ -32,11 +35,6 @@ public class Level01 extends Scenario {
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_MOVE_RIGHT_LEFT.getValue(), 80, 120, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.GOAL.getValue(), 80, 160, Color.WHITE));
 		super.strings.add(new StringRender(StringLevel.TUTORIAL_PAUSE.getValue(), 80, 200, Color.WHITE));
-	}
-	
-	@Override
-	protected void playerSetPosition() {
-		super.player.setPosition(150, super.height - 100);
 	}
 
 	@Override

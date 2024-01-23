@@ -23,29 +23,28 @@ import verticalquest.utils.StringRender;
 
 public abstract class Scenario {
 
-	public final int width;
-	public final int height;
+	public int width;
 
 	protected char[][] map;
 
-	protected ZoneSpawn spawn;
-	protected Portal portal;
+	private ZoneSpawn spawn;
+	private Portal portal;
 
-	protected final List<Tile> tiles;
-	protected final List<BlockRed> blockReds;
-	protected final List<StringRender> strings;
+	private int playerX;
+	private int playerY;
 
 	protected final Player player;
+
+	private final List<Tile> tiles;
+	private final List<BlockRed> blockReds;
+	protected final List<StringRender> strings;
 
 	public final double gravity;
 
 	private boolean keySpace;
 	private boolean pressedSpace;
 
-	public Scenario(int width, int height, Player player) {
-		this.width = width;
-		this.height = height;
-
+	public Scenario(Player player) {
 		this.tiles = new ArrayList<>();
 		this.blockReds = new ArrayList<>();
 		this.strings = new ArrayList<>();
@@ -58,13 +57,11 @@ public abstract class Scenario {
 		this.keySpace = false;
 		this.pressedSpace = false;
 
-		this.setStrings();
-		this.playerSetPosition();
-
 		this.player.stopUp();
 		this.player.stopRight();
 		this.player.stopLeft();
 
+		this.setStrings();
 		this.buildGame();
 	}
 
@@ -73,38 +70,45 @@ public abstract class Scenario {
 	private void buildGame() {
 		this.initializeLevel();
 
+		this.width = this.map[0].length * 50;
+
 		for (int i = 0; i < this.map.length; i++) {
 			for (int j = 0; j < this.map[0].length; j++) {
 				switch (map[i][j]) {
 					case 'F':
-						this.tiles.add(new Floor(50 * i, 50 * j));
+						this.tiles.add(new Floor(50 * j, 50 * i));
 						break;
 					case 'C':
-						this.tiles.add(new Ceiling(50 * i, 50 * j));
+						this.tiles.add(new Ceiling(50 * j, 50 * i));
 						break;
 					case 'W':
-						this.tiles.add(new Wall(50 * i, 50 * j));
+						this.tiles.add(new Wall(50 * j, 50 * i));
 						break;
 					case 'R':
-						this.blockReds.add(new BlockRed(50 * i, 50 * j));
+						this.blockReds.add(new BlockRed(50 * j, 50 * i));
 						break;
 					case 'P':
-						this.portal = new Portal(50 * i, 50 * j);
+						this.portal = new Portal(50 * j, 50 * i - 20);
 						break;
 					case 'S':
-						this.spawn = new ZoneSpawn(50 * i, 50 * j);
+						this.spawn = new ZoneSpawn(50 * j, 50 * i);
 						break;
 					case 'J':
-						this.player.setPosition(50 * i, 50 * j);
+						this.playerX = 50 * j;
+						this.playerY = 50 * i;
 						break;
 				}
 			}
 		}
+
+		this.playerSetPosition();
 	}
 
 	protected abstract void setStrings();
 
-	protected abstract void playerSetPosition();
+	private void playerSetPosition() {
+		this.player.setPosition(this.playerX, this.playerY);
+	}
 
 	protected abstract void nextLevel();
 
