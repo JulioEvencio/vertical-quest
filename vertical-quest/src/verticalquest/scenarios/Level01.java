@@ -4,15 +4,26 @@ import java.awt.Color;
 
 import verticalquest.Game;
 import verticalquest.entities.Player;
-import verticalquest.entities.Portal;
-import verticalquest.entities.ZoneSpawn;
 import verticalquest.strings.StringLevel;
 import verticalquest.utils.StringRender;
 
 public class Level01 extends Scenario {
 
 	public Level01(Player player) {
-		super(Game.WIDTH, Game.HEIGHT, new ZoneSpawn(100, Game.HEIGHT - 150), new Portal(Game.WIDTH - 150, Game.HEIGHT - 120), player);
+		super(Game.WIDTH, Game.HEIGHT, player);
+	}
+
+	protected void initializeLevel() {
+		super.map = new char[][] {
+			{'C', 'C', 'C', 'C', 'C', 'C', 'C'},
+			{'W', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', 'S', ' ', ' ', 'P', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'W', 'J', ' ', ' ', ' ', ' ', 'W'},
+			{'W', ' ', ' ', ' ', ' ', ' ', 'W'},
+			{'F', 'F', 'F', 'F', 'F', 'F', 'F'}
+		};
 	}
 
 	@Override
