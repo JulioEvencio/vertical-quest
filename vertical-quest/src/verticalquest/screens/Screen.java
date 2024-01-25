@@ -88,14 +88,14 @@ public abstract class Screen {
 	}
 
 	public void render(Graphics render) {
-		render.drawImage(Screen.background, 0, 0, Game.getGameWidth(), Game.getGameHeight(), null);
+		render.drawImage(Screen.background, 0, 0, Game.rendererWidth, Game.rendererHeight, null);
 
 		render.setColor(Color.WHITE);
 		render.setFont(GameUtil.getFontTitle());
 
 		int titleWidth = render.getFontMetrics().stringWidth(this.title);
 
-		render.drawString(this.title, (Game.getGameWidth() - titleWidth) / 2, 100);
+		render.drawString(this.title, (Game.rendererWidth - titleWidth) / 2, 100);
 
 		this.texts.forEach(text -> text.render(render));
 		this.buttons.forEach(button -> button.render(render));

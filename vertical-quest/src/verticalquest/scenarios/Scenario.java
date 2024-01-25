@@ -75,28 +75,28 @@ public abstract class Scenario {
 		for (int i = 0; i < this.map.length; i++) {
 			for (int j = 0; j < this.map[0].length; j++) {
 				switch (map[i][j]) {
-					case 'F':
-						this.tiles.add(new Floor(50 * j, 50 * i));
-						break;
-					case 'C':
-						this.tiles.add(new Ceiling(50 * j, 50 * i));
-						break;
-					case 'W':
-						this.tiles.add(new Wall(50 * j, 50 * i));
-						break;
-					case 'R':
-						this.blockReds.add(new BlockRed(50 * j, 50 * i));
-						break;
-					case 'P':
-						this.portal = new Portal(50 * j, 50 * i - 20);
-						break;
-					case 'S':
-						this.spawn = new ZoneSpawn(50 * j, 50 * i);
-						break;
-					case 'J':
-						this.playerX = 50 * j;
-						this.playerY = 50 * i;
-						break;
+				case 'F':
+					this.tiles.add(new Floor(50 * j, 50 * i));
+					break;
+				case 'C':
+					this.tiles.add(new Ceiling(50 * j, 50 * i));
+					break;
+				case 'W':
+					this.tiles.add(new Wall(50 * j, 50 * i));
+					break;
+				case 'R':
+					this.blockReds.add(new BlockRed(50 * j, 50 * i));
+					break;
+				case 'P':
+					this.portal = new Portal(50 * j, 50 * i - 20);
+					break;
+				case 'S':
+					this.spawn = new ZoneSpawn(50 * j, 50 * i);
+					break;
+				case 'J':
+					this.playerX = 50 * j;
+					this.playerY = 50 * i;
+					break;
 				}
 			}
 		}
@@ -129,7 +129,7 @@ public abstract class Scenario {
 	}
 
 	private boolean canRender(Rect object) {
-		Rect areaCamera = new Rect(Camera.x, 0, Game.getGameWidth(), Game.getGameHeight());
+		Rect areaCamera = new Rect(Camera.x, 0, Game.rendererWidth, Game.rendererHeight);
 
 		return areaCamera.isColliding(object);
 	}
@@ -163,7 +163,7 @@ public abstract class Scenario {
 
 	public void render(Graphics render) {
 		render.setColor(Color.BLACK);
-		render.fillRect(0, 0, Game.getGameWidth(), Game.getGameHeight());
+		render.fillRect(0, 0, Game.rendererWidth, Game.rendererHeight);
 
 		this.strings.forEach(string -> {
 			if (this.canRender(new Rect(string.getX(), string.getY(), string.getWidth(), string.getHeight()))) {
