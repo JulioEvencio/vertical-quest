@@ -30,7 +30,6 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	public static final String VERSION = "0.1";
 
-	public static final int SCALE = 1;
 	public static final int WIDTH = 750;
 	public static final int HEIGHT = 500;
 
@@ -67,7 +66,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		this.addKeyListener(this);
 		this.addMouseListener(this);
 
-		this.setPreferredSize(new Dimension(Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE));
+		this.setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
 
 		this.fps = 0;
 		this.showFPS = false;
@@ -165,7 +164,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		render.dispose();
 
 		Graphics graphics = bs.getDrawGraphics();
-		graphics.drawImage(this.renderer, 0, 0, Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE, null);
+		graphics.drawImage(this.renderer, 0, 0, Game.WIDTH, Game.HEIGHT, null);
 
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.render(graphics);
