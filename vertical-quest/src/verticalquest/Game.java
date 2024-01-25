@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -11,7 +12,9 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import verticalquest.entities.Player;
 import verticalquest.resources.Audio;
@@ -33,10 +36,13 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private static int WIDTH = 750;
 	private static int HEIGHT = 500;
 
+	private boolean isFullscreen;
+	private boolean updateFullscreen;
+
 	private int fps;
 	private boolean showFPS;
 
-	private final BufferedImage renderer;
+	private BufferedImage renderer;
 
 	private static GameStatus gameStatus;
 
@@ -68,6 +74,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		this.setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
 
+		this.isFullscreen = false;
+		this.updateFullscreen = true;
+
 		this.fps = 0;
 		this.showFPS = false;
 		this.renderer = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -91,6 +100,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	public static void initializeGame() {
 		Game.player = new Player();
 
+		Game.initializeScreen();
+	}
+
+	public static void initializeScreen() {
 		Game.selectLanguage = new SelectLanguage();
 		Game.mainMenu = new MainMenu();
 		Game.pause = new Pause();
@@ -126,12 +139,47 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		}
 	}
 
+	private void toggleFullscreen() {
+		if (this.isFullscreen != this.updateFullscreen) {
+			this.isFullscreen = this.updateFullscreen;
+
+			JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+
+			frame.dispose();
+
+			if (this.isFullscreen) {
+				Game.WIDTH = 750;
+				Game.HEIGHT = 500;
+
+				frame.setUndecorated(false);
+			} else {
+				Game.WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
+				Game.HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+
+				frame.setUndecorated(true);
+			}
+
+			this.setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
+			this.renderer = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
+
+			Game.initializeScreen();
+
+			frame.pack();
+			frame.setLocationRelativeTo(null);
+			frame.setVisible(true);
+
+			this.requestFocus();
+		}
+	}
+
 	private void tick() {
 		if (this.enableAudio) {
 			Game.audioNow.play();
 		} else {
 			Game.audioNow.stop();
 		}
+
+		this.toggleFullscreen();
 
 		if (Game.gameStatus == GameStatus.RUN) {
 			Game.scenario.tick();
@@ -253,6 +301,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			Game.scenario.keyReleased(e);
 		} else if (Game.gameStatus == GameStatus.PAUSE) {
 			((Pause) Game.pause).keyReleased(e);
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_F2) {
+			this.updateFullscreen = !this.updateFullscreen;
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_F3) {
