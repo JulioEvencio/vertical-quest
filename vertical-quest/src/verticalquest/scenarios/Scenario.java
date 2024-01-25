@@ -129,7 +129,7 @@ public abstract class Scenario {
 	}
 
 	private boolean canRender(Rect object) {
-		Rect areaCamera = new Rect(Camera.x, 0, Game.WIDTH, Game.HEIGHT);
+		Rect areaCamera = new Rect(Camera.x, 0, Game.getGameWidth(), Game.getGameHeight());
 
 		return areaCamera.isColliding(object);
 	}
@@ -163,7 +163,7 @@ public abstract class Scenario {
 
 	public void render(Graphics render) {
 		render.setColor(Color.BLACK);
-		render.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
+		render.fillRect(0, 0, Game.getGameWidth(), Game.getGameHeight());
 
 		this.strings.forEach(string -> {
 			if (this.canRender(new Rect(string.getX(), string.getY(), string.getWidth(), string.getHeight()))) {

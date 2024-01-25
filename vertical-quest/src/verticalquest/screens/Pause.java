@@ -12,9 +12,9 @@ public class Pause extends Screen {
 	public Pause() {
 		super(StringScreen.PAUSE.getValue());
 
-		super.getButtons().add(new Button(StringScreen.CONTINUE.getValue(), (Game.WIDTH - Button.getWidthPressed()) / 2, 150, () -> Game.updateGameStatus(GameStatus.RUN)));
-		super.getButtons().add(new Button(StringScreen.MENU.getValue(), (Game.WIDTH - Button.getWidthPressed()) / 2, 250, () -> Game.updateGameStatus(GameStatus.MAIN_MENU)));
-		super.getButtons().add(new Button(StringScreen.EXIT.getValue(), (Game.WIDTH - Button.getWidthPressed()) / 2, 350, () -> Game.updateGameStatus(GameStatus.EXIT)));
+		super.getButtons().add(new Button(StringScreen.CONTINUE.getValue(), (Game.getGameWidth() - Button.getWidthPressed()) / 2, 150, () -> Game.updateGameStatus(GameStatus.RUN)));
+		super.getButtons().add(new Button(StringScreen.MENU.getValue(), (Game.getGameWidth() - Button.getWidthPressed()) / 2, 250, () -> Game.updateGameStatus(GameStatus.MAIN_MENU)));
+		super.getButtons().add(new Button(StringScreen.EXIT.getValue(), (Game.getGameWidth() - Button.getWidthPressed()) / 2, 350, () -> Game.updateGameStatus(GameStatus.EXIT)));
 	}
 
 	public void keyReleased(KeyEvent e) {
