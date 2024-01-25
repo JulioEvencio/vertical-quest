@@ -127,7 +127,7 @@ public class Player extends Entity {
 		this.toRight();
 		this.toLeft();
 
-		Camera.x = Camera.clamp((int) (x - (Game.getGameWidth() / 2)), 0, super.scenario.width - Game.getGameWidth());
+		Camera.x = Camera.clamp((int) (x - (Game.rendererWidth / 2)), 0, super.scenario.width - Game.rendererWidth);
 	}
 
 }

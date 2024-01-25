@@ -42,7 +42,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	private int fps;
 	private boolean showFPS;
 
-	private BufferedImage renderer;
+	private final BufferedImage renderer;
+
+	public static final int rendererWidth;
+	public static final int rendererHeight;
 
 	private static GameStatus gameStatus;
 
@@ -66,6 +69,9 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	static {
 		audioMenu = new Audio("/audios/menu.wav");
 		audioGame = new Audio("/audios/game.wav");
+
+		rendererWidth = WIDTH;
+		rendererHeight = HEIGHT;
 	}
 
 	public Game() {
@@ -79,7 +85,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		this.fps = 0;
 		this.showFPS = false;
-		this.renderer = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
+
+		this.renderer = new BufferedImage(Game.rendererWidth, Game.rendererHeight, BufferedImage.TYPE_INT_RGB);
 
 		Game.gameStatus = GameStatus.SELECT_LANGUAGE;
 
@@ -160,7 +167,6 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			}
 
 			this.setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
-			this.renderer = new BufferedImage(Game.WIDTH, Game.HEIGHT, BufferedImage.TYPE_INT_RGB);
 
 			Game.initializeScreen();
 
