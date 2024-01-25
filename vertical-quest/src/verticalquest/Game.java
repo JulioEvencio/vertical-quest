@@ -215,30 +215,6 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			Game.scenario.render(render);
 		}
 
-		// render.dispose();
-
-		// Graphics graphics = bs.getDrawGraphics();
-		// graphics.drawImage(this.renderer, 0, 0, Game.WIDTH, Game.HEIGHT, null);
-
-		/*
-		 * if (Game.gameStatus == GameStatus.MAIN_MENU) {
-		 * Game.mainMenu.render(graphics); } else if (Game.gameStatus ==
-		 * GameStatus.PAUSE) { Game.pause.render(graphics); } else if (Game.gameStatus
-		 * == GameStatus.CREDITS) { Game.credits.render(graphics); } else if
-		 * (Game.gameStatus == GameStatus.SELECT_LANGUAGE) {
-		 * Game.selectLanguage.render(graphics); }
-		 * 
-		 * if (this.showFPS) { graphics.setColor(Color.BLACK);
-		 * graphics.fillRect(Game.WIDTH - 120, 10, 110, 30);
-		 * 
-		 * graphics.setColor(Color.WHITE); graphics.setFont(GameUtil.getFontDefault());
-		 * graphics.drawString(String.format("FPS: %d", this.fps), Game.WIDTH - 115,
-		 * 32);
-		 * 
-		 * graphics.setColor(Color.WHITE); graphics.drawRect(Game.WIDTH - 120, 10, 110,
-		 * 30); }
-		 */
-
 		if (Game.gameStatus == GameStatus.MAIN_MENU) {
 			Game.mainMenu.render(render);
 		} else if (Game.gameStatus == GameStatus.PAUSE) {
