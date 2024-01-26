@@ -96,6 +96,18 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		Game.initializeGame();
 	}
 
+	public static int getGameWidth() {
+		return Game.WIDTH;
+	}
+
+	public static int getGameHeight() {
+		return Game.HEIGHT;
+	}
+
+	public static boolean isFullscreen() {
+		return Game.getGameWidth() != Game.rendererWidth && Game.getGameHeight() != Game.rendererHeight;
+	}
+
 	public static void initializeGame() {
 		Game.player = new Player();
 
@@ -147,8 +159,8 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			frame.dispose();
 
 			if (this.isFullscreen) {
-				Game.WIDTH = 750;
-				Game.HEIGHT = 500;
+				Game.WIDTH = Game.rendererWidth;
+				Game.HEIGHT = Game.rendererHeight;
 
 				frame.setUndecorated(false);
 			} else {
