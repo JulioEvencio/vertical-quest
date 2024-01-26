@@ -227,14 +227,14 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		if (this.showFPS) {
 			render.setColor(Color.BLACK);
-			render.fillRect(Game.WIDTH - 120, 10, 110, 30);
+			render.fillRect(Game.rendererWidth - 120, 10, 110, 30);
 
 			render.setColor(Color.WHITE);
 			render.setFont(GameUtil.getFontDefault());
-			render.drawString(String.format("FPS: %d", this.fps), Game.WIDTH - 115, 32);
+			render.drawString(String.format("FPS: %d", this.fps), Game.rendererWidth - 115, 32);
 
 			render.setColor(Color.WHITE);
-			render.drawRect(Game.WIDTH - 120, 10, 110, 30);
+			render.drawRect(Game.rendererWidth - 120, 10, 110, 30);
 		}
 
 		render.dispose();
