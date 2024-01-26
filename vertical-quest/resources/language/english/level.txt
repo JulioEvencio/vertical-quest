@@ -1,6 +1,7 @@
 Use the A and D keys or the right and left arrows to move
 Your goal is to reach the blue portal
 Press P or ESC to pause the game
+Press F2 to enable/disable full screen
 Press the W key or the up arrow to jump
 Press F3 to show/hide FPS
 Press F4 to enable/disable music

@@ -1,6 +1,7 @@
 Utilice las teclas A y D o las flechas derecha e izquierda para moverse
 Tu objetivo es llegar al portal azul
 Pulsa P o ESC para pausar el juego
+Presione F2 para habilitar/deshabilitar la pantalla completa
 Pulsa la tecla W o la flecha hacia arriba para saltar
 Pulsa F3 para mostrar/ocultar FPS
 Pulsa F4 para habilitar/deshabilitar la música

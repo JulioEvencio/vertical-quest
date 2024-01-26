@@ -10,6 +10,7 @@ public class StringLevel {
 	public static final MessageString TUTORIAL_MOVE_RIGHT_LEFT = new MessageString("Use the A and D keys or the right and left arrows to move");
 	public static final MessageString GOAL = new MessageString("Your goal is to reach the blue portal");
 	public static final MessageString TUTORIAL_PAUSE = new MessageString("Press P or ESC to pause the game");
+	public static final MessageString TUTORIAL_FULL_SCREEN = new MessageString("Press F2 to enable/disable full screen");
 
 	public static final MessageString TUTORIAL_MOVE_JUMP = new MessageString("Use the A and D keys or the right and left arrows to move");
 	public static final MessageString TUTORIAL_FPS = new MessageString("Press F3 to show/hide FPS");

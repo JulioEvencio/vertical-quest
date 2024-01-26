@@ -39,6 +39,7 @@ public class Translation {
 				StringLevel.TUTORIAL_MOVE_RIGHT_LEFT,
 				StringLevel.GOAL,
 				StringLevel.TUTORIAL_PAUSE,
+				StringLevel.TUTORIAL_FULL_SCREEN,
 				StringLevel.TUTORIAL_MOVE_JUMP,
 				StringLevel.TUTORIAL_FPS,
 				StringLevel.TUTORIAL_MUSIC,
