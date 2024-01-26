@@ -2,8 +2,10 @@ package verticalquest;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -30,6 +32,8 @@ import verticalquest.strings.StringError;
 public class Game extends Canvas implements Runnable, KeyListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
+
+	private static Game currentGame;
 
 	public static final String VERSION = "0.1";
 
@@ -94,6 +98,12 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		Game.updateAudio(Game.audioMenu);
 		Game.initializeGame();
+
+		Game.currentGame = this;
+	}
+
+	private static JFrame getJFrame() {
+		return (JFrame) SwingUtilities.getWindowAncestor(Game.currentGame);
 	}
 
 	public static int getGameWidth() {
@@ -135,8 +145,14 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 		if (Game.gameStatus == GameStatus.RUN || Game.gameStatus == GameStatus.PAUSE) {
 			Game.updateAudio(Game.audioGame);
+			Game.hideCursor();
+
+			if (Game.gameStatus == GameStatus.PAUSE) {
+				Game.showCursor();
+			}
 		} else {
 			Game.updateAudio(Game.audioMenu);
+			Game.showCursor();
 		}
 	}
 
@@ -154,7 +170,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		if (this.isFullscreen != this.updateFullscreen) {
 			this.isFullscreen = this.updateFullscreen;
 
-			JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+			JFrame frame = Game.getJFrame();
 
 			frame.dispose();
 
@@ -180,6 +196,16 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 			this.requestFocus();
 		}
+	}
+
+	private static void showCursor() {
+		Game.getJFrame().setCursor(Cursor.getDefaultCursor());
+	}
+
+	private static void hideCursor() {
+		BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+		Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blankCursor");
+		Game.getJFrame().setCursor(blankCursor);
 	}
 
 	private void tick() {
