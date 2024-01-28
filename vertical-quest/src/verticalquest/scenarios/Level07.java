@@ -2,6 +2,7 @@ package verticalquest.scenarios;
 
 import java.awt.Color;
 
+import verticalquest.Game;
 import verticalquest.entities.Player;
 import verticalquest.strings.StringLevel;
 import verticalquest.utils.StringRender;
@@ -35,7 +36,7 @@ public class Level07 extends Scenario {
 
 	@Override
 	protected void nextLevel() {
-		// Game.restart(new Level08(super.player));
+		Game.restart(new Level08(super.player));
 	}
 
 	@Override
