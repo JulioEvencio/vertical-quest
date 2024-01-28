@@ -23,9 +23,11 @@ public class StringScreen {
 
 	public static final MessageString AUDIO_MENU_CREDITS = new MessageString("Audio: josefpres");
 	public static final MessageString AUDIO_MENU_CREDITS_LINK = new MessageString("freesound.org: https://freesound.org/people/josefpres/");
-	
+
 	public static final MessageString AUDIO_GAME_CREDITS = new MessageString("Audio: gis_sweden");
 	public static final MessageString AUDIO_GAME_CREDITS_LINK = new MessageString("freesound.org: https://freesound.org/people/gis_sweden/");
+
+	public static final MessageString SOURCE_CODE_LINK = new MessageString("Source Code: https://github.com/JulioEvencio/vertical-quest");
 
 	public static final MessageString BACK = new MessageString("Back");
 

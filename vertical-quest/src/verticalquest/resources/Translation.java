@@ -69,6 +69,8 @@ public class Translation {
 					StringScreen.AUDIO_GAME_CREDITS,
 					StringScreen.AUDIO_GAME_CREDITS_LINK,
 
+					StringScreen.SOURCE_CODE_LINK,
+
 					StringScreen.BACK
 			});
 

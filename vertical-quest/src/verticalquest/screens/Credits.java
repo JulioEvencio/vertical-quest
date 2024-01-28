@@ -25,6 +25,8 @@ public class Credits extends Screen {
 		this.getTexts().add(new Text(StringScreen.AUDIO_GAME_CREDITS.getValue(), 50, 310, Color.WHITE));
 		this.getTexts().add(new Text(StringScreen.AUDIO_GAME_CREDITS_LINK.getValue(), 50, 340, Color.WHITE));
 
+		this.getTexts().add(new Text(StringScreen.SOURCE_CODE_LINK.getValue(), 50, 370, Color.WHITE));
+
 		this.getButtons().add(new Button(StringScreen.BACK.getValue(), 50, Game.rendererHeight - Button.getHeightpressed() - 50, () -> Game.updateGameStatus(GameStatus.MAIN_MENU)));
 	}
 
