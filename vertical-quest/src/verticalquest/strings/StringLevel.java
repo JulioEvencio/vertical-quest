@@ -7,6 +7,11 @@ public class StringLevel {
 	public static final MessageString LEVEL_03 = new MessageString("Level 03");
 	public static final MessageString LEVEL_04 = new MessageString("Level 04");
 	public static final MessageString LEVEL_05 = new MessageString("Level 05");
+	public static final MessageString LEVEL_06 = new MessageString("Level 06");
+	public static final MessageString LEVEL_07 = new MessageString("Level 07");
+	public static final MessageString LEVEL_08 = new MessageString("Level 08");
+	public static final MessageString LEVEL_09 = new MessageString("Level 09");
+	public static final MessageString LEVEL_10 = new MessageString("Level 10");
 
 	public static final MessageString TUTORIAL_MOVE_RIGHT_LEFT = new MessageString("Use the A and D keys or the right and left arrows to move");
 	public static final MessageString GOAL = new MessageString("Your goal is to reach the blue portal");
