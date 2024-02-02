@@ -28,4 +28,9 @@ public class StringLevel {
 
 	public static final MessageString TUTORIAL_BLOCK_RED = new MessageString("Colliding into the red block will kill you");
 
+	public static final MessageString LEVEL_VICTORY = new MessageString("Victory!");
+	public static final MessageString LEVEL_BEAT_GAME = new MessageString("You beat the game!!");
+	public static final MessageString LEVEL_THANKS_FOR_PLAYING = new MessageString("Thanks for playing!!!");
+	public static final MessageString LEVEL_PRESS_P_ESC = new MessageString("Press P or ESC...");
+
 }
