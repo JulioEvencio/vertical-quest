@@ -9,3 +9,7 @@ Pulsa la barra espaciadora para generar un clon de ti mismo
 No puedes generar clones en la zona verde
 Pulsa R para reiniciar el nivel
 Chocar contra el bloque rojo te matará
+Victoria!
+Ganaste el juego!!
+Gracias por jugar!!!
+Pulsa P o ESC...

@@ -9,3 +9,7 @@ Press the spacebar to generate a clone of yourself
 You cannot spawn clones in the green zone
 Press R to restart the level
 Colliding into the red block will kill you
+Victory!
+You beat the game!!
+Thanks for playing!!!
+Press P or ESC...

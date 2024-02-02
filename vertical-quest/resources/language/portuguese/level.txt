@@ -9,3 +9,7 @@ Pressione a barra de espaço para gerar um clone seu
 Você não pode gerar clones na zona verde
 Pressione R para recomeçar o level
 Colidir no bloco vermelho irá matar você
+Vitória!
+Você zerou o jogo!!
+Obrigado por jogar!!!
+Pressione P ou ESC...
