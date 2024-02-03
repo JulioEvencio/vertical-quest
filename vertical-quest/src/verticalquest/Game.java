@@ -48,6 +48,14 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	private final BufferedImage renderer;
 
+	private final double screenRatio;
+
+	private int newWidth;
+	private int newHeight;
+
+	private int newX;
+	private int newY;
+
 	public static final int rendererWidth;
 	public static final int rendererHeight;
 
@@ -83,6 +91,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		this.addMouseListener(this);
 
 		this.setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
+
+		this.screenRatio = (double) Game.rendererWidth / (double) Game.rendererHeight;
+
+		this.setScreenRatio();
 
 		this.isFullscreen = false;
 		this.updateFullscreen = true;
@@ -187,6 +199,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			}
 
 			this.setPreferredSize(new Dimension(Game.WIDTH, Game.HEIGHT));
+			this.setScreenRatio();
 
 			Game.initializeScreen();
 
@@ -195,6 +208,23 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 			frame.setVisible(true);
 
 			this.requestFocus();
+		}
+	}
+
+	private void setScreenRatio() {
+		this.newWidth = (int) (Game.HEIGHT * this.screenRatio);
+
+		if (newWidth > Game.WIDTH) {
+			this.newWidth = Game.WIDTH;
+			this.newHeight = (int) (Game.WIDTH * this.screenRatio);
+
+			this.newX = 0;
+			this.newY = (Game.HEIGHT - this.newHeight) / 2;
+		} else {
+			this.newHeight = Game.HEIGHT;
+
+			this.newX = (Game.WIDTH - this.newWidth) / 2;
+			this.newY = 0;
 		}
 	}
 
@@ -278,7 +308,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		render.dispose();
 
 		Graphics graphics = bs.getDrawGraphics();
-		graphics.drawImage(this.renderer, 0, 0, Game.WIDTH, Game.HEIGHT, null);
+		graphics.drawImage(this.renderer, this.newX, this.newY, this.newWidth, this.newHeight, null);
 
 		bs.show();
 	}
