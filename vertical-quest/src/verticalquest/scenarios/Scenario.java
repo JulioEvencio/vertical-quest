@@ -140,6 +140,7 @@ public abstract class Scenario {
 
 		if (this.portal.getRect().isColliding(this.player.getRect())) {
 			this.nextLevel();
+			return;
 		}
 
 		this.blockReds.forEach(blockRed -> {
