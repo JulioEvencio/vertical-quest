@@ -308,6 +308,10 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		render.dispose();
 
 		Graphics graphics = bs.getDrawGraphics();
+
+		graphics.setColor(new Color(50, 50, 100));
+		graphics.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
+
 		graphics.drawImage(this.renderer, this.newX, this.newY, this.newWidth, this.newHeight, null);
 
 		bs.show();
