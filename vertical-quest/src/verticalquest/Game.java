@@ -50,11 +50,11 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 
 	private final double screenRatio;
 
-	private int newWidth;
-	private int newHeight;
+	private static int newWidth;
+	private static int newHeight;
 
-	private int newX;
-	private int newY;
+	private static int newX;
+	private static int newY;
 
 	public static final int rendererWidth;
 	public static final int rendererHeight;
@@ -119,11 +119,23 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 
 	public static int getGameWidth() {
-		return Game.WIDTH;
+		return Game.newWidth;
 	}
 
 	public static int getGameHeight() {
-		return Game.HEIGHT;
+		return Game.newHeight;
+	}
+
+	public static int getGameX() {
+		if (Game.newHeight == Game.WIDTH) {
+			return Game.newX;
+		}
+
+		return Game.newX - 40;
+	}
+
+	public static int getGameY() {
+		return Game.newY;
 	}
 
 	public static boolean isFullscreen() {
@@ -212,19 +224,19 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 
 	private void setScreenRatio() {
-		this.newWidth = (int) (Game.HEIGHT * this.screenRatio);
+		Game.newWidth = (int) (Game.HEIGHT * this.screenRatio);
 
-		if (newWidth > Game.WIDTH) {
-			this.newWidth = Game.WIDTH;
-			this.newHeight = (int) (Game.WIDTH * this.screenRatio);
+		if (Game.newWidth > Game.WIDTH) {
+			Game.newWidth = Game.WIDTH;
+			Game.newHeight = (int) (Game.WIDTH * this.screenRatio);
 
-			this.newX = 0;
-			this.newY = (Game.HEIGHT - this.newHeight) / 2;
+			Game.newX = 0;
+			Game.newY = (Game.HEIGHT - Game.newHeight) / 2;
 		} else {
-			this.newHeight = Game.HEIGHT;
+			Game.newHeight = Game.HEIGHT;
 
-			this.newX = (Game.WIDTH - this.newWidth) / 2;
-			this.newY = 0;
+			Game.newX = (Game.WIDTH - Game.newWidth) / 2;
+			Game.newY = 0;
 		}
 	}
 
@@ -312,7 +324,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 		graphics.setColor(new Color(50, 50, 100));
 		graphics.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 
-		graphics.drawImage(this.renderer, this.newX, this.newY, this.newWidth, this.newHeight, null);
+		graphics.drawImage(this.renderer, Game.newX, Game.newY, Game.newWidth, Game.newHeight, null);
 
 		bs.show();
 	}
