@@ -16,7 +16,10 @@ Click [here](https://julio-igreja.itch.io/vertical-quest) to download the game.
 
 Click [here](https://www.youtube.com/watch?v=sTTa8TT9Q18) to watch the game demonstration video.
 
-## Images
+## Contribution
+Please feel free to send pull requests and report issues.
+
+## Gallery
 
 <div style="display: inline"><br>
   <img align="center" alt="Game - Image 01" height="300" width="300" style="margin: 10px;" src="https://img.itch.zone/aW1hZ2UvMjUxMTEzMi8xNDkyNTAxNC5wbmc=/original/aFIvyt.png"/>
@@ -24,6 +27,3 @@ Click [here](https://www.youtube.com/watch?v=sTTa8TT9Q18) to watch the game demo
   <img align="center" alt="Game - Image 03" height="300" width="300" style="margin: 10px;" src="https://img.itch.zone/aW1hZ2UvMjUxMTEzMi8xNDkyNTAxNi5wbmc=/original/AuK2Yz.png"/>
   <img align="center" alt="Game - Image 03" height="300" width="300" style="margin: 10px;" src="https://img.itch.zone/aW1hZ2UvMjUxMTEzMi8xNDkyNTAxMy5wbmc=/original/kaPi19.png"/>
 </div>
-
-## Contribution
-Please feel free to send pull requests and report issues.
