@@ -127,11 +127,7 @@ public class Game extends Canvas implements Runnable, KeyListener, MouseListener
 	}
 
 	public static int getGameX() {
-		if (Game.newHeight == Game.WIDTH) {
-			return Game.newX;
-		}
-
-		return Game.newX - 40;
+		return Game.newX;
 	}
 
 	public static int getGameY() {
