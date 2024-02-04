@@ -2,6 +2,12 @@
 
 A simple platform game
 
+## Links
+
+Click [here](https://julio-igreja.itch.io/vertical-quest) to download the game.
+
+Click [here](https://www.youtube.com/watch?v=sTTa8TT9Q18) to watch the game demonstration video.
+
 ## How to run
 
 This project is a simple Java application. The class `verticalquest.Main` is responsible for running the program.
@@ -9,12 +15,6 @@ This project is a simple Java application. The class `verticalquest.Main` is res
 **NOTE 01: I recommend using JDK 8 or higher**
 
 **NOTE 02: You will need to add the `resources folder` to the project's `Class-Path`, that is, configure it so that this folder is inside the `JAR` when the project is compiled.**
-
-## Links
-
-Click [here](https://julio-igreja.itch.io/vertical-quest) to download the game.
-
-Click [here](https://www.youtube.com/watch?v=sTTa8TT9Q18) to watch the game demonstration video.
 
 ## Contribution
 Please feel free to send pull requests and report issues.
