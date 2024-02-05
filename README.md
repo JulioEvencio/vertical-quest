@@ -17,6 +17,7 @@ This project is a simple Java application. The class `verticalquest.Main` is res
 **NOTE 02: You will need to add the `resources folder` to the project's `Class-Path`, that is, configure it so that this folder is inside the `JAR` when the project is compiled.**
 
 ## Contribution
+
 Please feel free to send pull requests and report issues.
 
 ## Gallery
